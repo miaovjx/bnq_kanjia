@@ -26,8 +26,41 @@ $(function() {
             $('.page1').removeClass('none');
         }, 500);
     });
-
     var btn_frined_take = true;
+    var goodsLst = [{
+        gtxt: "./images/gtxt1.png",
+        goodsImg: "./images/goods1.png",
+        formal_price: '176',
+        now_price: '149',
+        tag1: true,
+        tag2: false
+    }, {
+        gtxt: "./images/gtxt2.png",
+        goodsImg: "./images/goods2.png",
+        formal_price: '1699',
+        now_price: '1099',
+        tag1: true,
+        tag2: false
+    }, {
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true
+    }];
+    new Vue({
+        el: ".page_share .goods_lst",
+        data: {
+            list: goodsLst
+        },
+        methods: {
+            show(todo) { //
+                var index = this.list.indexOf(todo);
+                this.list.splice(index, 1);
+            }
+        }
+    });
     $('.btn_close').on('tap', function() {
         $(this).closest('.tk').addClass('none');
     });

@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                
         </script>
     </head>
     <body>
@@ -39,40 +39,20 @@
                 <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
                 <div class="goodsbox">
                     <ul class="goods_lst clearfix">
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt1.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods1.png" alt=""/> </div>
-                            <div class="formal_price">原价：176元 <div class="line"></div></div>
-                            <div class="now_price tag1"><strong>149</strong><span>元</span></div>
-                        </li>
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt2.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods2.png" alt=""/> </div>
-                            <div class="formal_price">原价：1699元<div class="line"></div></div>
-                            <div class="now_price tag1"><strong>1099</strong><span>元</span></div>
-                        </li>
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt3.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods3.png" alt=""/> </div>
-                            <div class="formal_price">原价：19.9元<div class="line"></div></div>
-                            <div class="now_price tag2"><strong>1</strong><span>元</span></div>
+                        <li v-for="item in list">
+                            <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                            <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
+                            <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                            <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
                         </li>
                     </ul>
                 </div>
                 <a href="javascript:;" class="btn_kan"></a>
                 <div class="nextbox">
                     <ul class="next_lst clearfix">
-                        <li>
-                            <div class="swiperimg"> <img class="nextImg" src="images/next1.png" alt=""/> </div>
-                            <div class="text"><img class="ntxt" src="images/ntxt1.png" alt=""/></div>
-                        </li>
-                        <li>
-                            <div class="swiperimg"> <img class="nextImg" src="images/next2.png" alt=""/> </div>
-                            <div class="text"><img class="ntxt" src="images/ntxt2.png" alt=""/></div>
-                        </li>
-                        <li>
-                            <div class="swiperimg"> <img class="nextImg" src="images/next3.png" alt=""/> </div>
-                            <div class="text"><img class="ntxt" src="images/ntxt3.png" alt=""/></div>
+                        <li v-for="item in list">
+                            <div class="swiperimg"> <img class="nextImg" :src="item.nextImg" alt=""/> </div>
+                            <div class="text"><img class="ntxt" :src="item.ntxt" alt=""/></div>
                         </li>
                     </ul>
                 </div>
@@ -83,23 +63,11 @@
                 <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
                 <div class="goodsbox">
                     <ul class="goods_lst clearfix">
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt1.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods1.png" alt=""/> </div>
-                            <div class="formal_price">原价：176元 <div class="line"></div></div>
-                            <div class="now_price tag1"><strong>149</strong><span>元</span></div>
-                        </li>
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt2.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods2.png" alt=""/> </div>
-                            <div class="formal_price">原价：1699元<div class="line"></div></div>
-                            <div class="now_price tag1"><strong>1099</strong><span>元</span></div>
-                        </li>
-                        <li>
-                            <div class="text"><img class="gtxt" src="images/gtxt3.png" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" src="images/goods3.png" alt=""/> </div>
-                            <div class="formal_price">原价：19.9元<div class="line"></div></div>
-                            <div class="now_price tag2"><strong>1</strong><span>元</span></div>
+                        <li v-for="item in list">
+                            <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                            <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
+                            <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                            <div class="now_price " :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
                         </li>
                     </ul>
                 </div>
@@ -132,23 +100,11 @@
                     <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
                     <div class="goodsbox">
                         <ul class="goods_lst clearfix">
-                            <li>
-                                <div class="text"><img class="gtxt" src="images/gtxt1.png" alt=""/></div>
-                                <div class="swiperimg"> <img class="goodsImg" src="images/goods1.png" alt=""/> </div>
-                                <div class="formal_price">原价：176元 <div class="line"></div></div>
-                                <div class="now_price tag1"><strong>149</strong><span>元</span></div>
-                            </li>
-                            <li>
-                                <div class="text"><img class="gtxt" src="images/gtxt2.png" alt=""/></div>
-                                <div class="swiperimg"> <img class="goodsImg" src="images/goods2.png" alt=""/> </div>
-                                <div class="formal_price">原价：1699元<div class="line"></div></div>
-                                <div class="now_price tag1"><strong>1099</strong><span>元</span></div>
-                            </li>
-                            <li>
-                                <div class="text"><img class="gtxt" src="images/gtxt3.png" alt=""/></div>
-                                <div class="swiperimg"> <img class="goodsImg" src="images/goods3.png" alt=""/> </div>
-                                <div class="formal_price">原价：19.9元<div class="line"></div></div>
-                                <div class="now_price tag2"><strong>1</strong><span>元</span></div>
+                            <li v-for="item in list">
+                                <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                                <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
+                                <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                                <div class="now_price" :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
                             </li>
                         </ul>
                     </div>
@@ -167,7 +123,7 @@
                         <!-- 未集齐 end -->
                         <!-- 集齐 start-->
                         <div class="user_box clearfix user_done none">
-                        <img class="userImg fl" src="images/user.jpg" alt=""/>
+                            <img class="userImg fl" src="images/user.jpg" alt=""/>
                             <ul class="user_msg fr">
                                 <li class="user_name">Aaronxu乃又皿</li>
                                 <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
@@ -288,12 +244,9 @@
         <div class="tkIn ">
             <img class="alert_bg" src="images/alert_bg.png" alt=""/>
             <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
-           <a href="javascript:;" class="btn_close"></a>
+            <a href="javascript:;" class="btn_close"></a>
         </div>
     </div>
-
-
-
     <div id="orientLayer" class="mod-orient-layer">
         <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
             <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
@@ -308,6 +261,7 @@
     </div>
     <!-- js -->
     <script src="js/jweixin-1.0.0.js"></script>
+    <script src="js/vue.js"></script>
     <script src="js/zepto.min.js"></script>
     <script src="js/pxloader-images.min.js"></script>
     <script src="js/m.Tween.js"></script>

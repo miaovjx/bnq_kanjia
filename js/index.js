@@ -14,7 +14,7 @@ $(function() {
     //app初始化
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
-        dev: 3, //
+        dev: 1, //
         // musicUrl: 'music/bg.mp3',
         baseUrl: 'http://xk.guoxinad.com.cn/ad_invitation/'
     });
@@ -39,6 +39,82 @@ $(function() {
         }, 500);
     });
     var btn_kanjia = false;
+    var goodsLst = [{
+        gtxt: "./images/gtxt1.png",
+        goodsImg: "./images/goods1.png",
+        formal_price: '176',
+        now_price: '149',
+        tag1: true,
+        tag2: false
+    }, {
+        gtxt: "./images/gtxt2.png",
+        goodsImg: "./images/goods2.png",
+        formal_price: '1699',
+        now_price: '1099',
+        tag1: true,
+        tag2: false
+    }, {
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true
+    }];
+    new Vue({
+        el: ".page_kan_a .goods_lst",
+        data: {
+            list: goodsLst
+        },
+        methods: {
+            show(todo) { //
+                var index = this.list.indexOf(todo);
+                this.list.splice(index, 1);
+            }
+        }
+    });
+    new Vue({
+        el: ".page_my_not .goods_lst",
+        data: {
+            list: goodsLst
+        },
+        methods: {
+            show(todo) { //
+                var index = this.list.indexOf(todo);
+                this.list.splice(index, 1);
+            }
+        }
+    });
+    new Vue({
+        el: ".page_my_done .goods_lst",
+        data: {
+            list: goodsLst
+        },
+        methods: {
+            show(todo) { //
+                var index = this.list.indexOf(todo);
+                this.list.splice(index, 1);
+            }
+        }
+    });
+    var nextLst = [{
+        ntxt: "./images/ntxt1.png",
+        nextImg: "./images/next1.png"
+    }, {
+        ntxt: "./images/ntxt2.png",
+        nextImg: "./images/next2.png"
+    }, {
+        ntxt: "./images/ntxt3.png",
+        nextImg: "./images/next3.png"
+    }];
+    
+    new Vue({
+        el: ".page_kan_a .next_lst",
+        data: {
+            list: nextLst
+        }
+    });
+
     //我的福利
     $('.btn_my').on('tap', function(ev) {
         ev.stopPropagation();
