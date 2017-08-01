@@ -1,7 +1,6 @@
 /**
  * Created by json(610330335@qq.com) .
  */
-
 // import '../css/gx-animate.min.css';
 // import '../css/style.css';
 // import '../js/jweixin-1.0.0.js';
@@ -9,33 +8,37 @@
 // import '../js/pxloader-images.min.js';
 // import '../js/m.Tween.js';
 // import '../js/PageSlider.js';
-
-
 $(function() {
     //加载图
     var imgarr = ['images/bg1.jpg'];
     //app初始化
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
-        dev: 0, //
+        dev: 3, //
         // musicUrl: 'music/bg.mp3',
         baseUrl: 'http://xk.guoxinad.com.cn/ad_invitation/'
     });
     ////默认分享
     h5.wxShare('宝贝性格测试，你是否真懂你的娃？', '解自家娃！', '宝贝性格测试，你是否真懂你的娃？', h5.baseUrl + 'index.html', h5.baseUrl + 'images/jsshare.jpg');
+    var url = document.location.href;
+    var pos = url.lastIndexOf("shareid=");
+    var shareid = '';
+    var realshareid = '';
     h5._loadimg(imgarr, function() {
+        shareid = url.substr(pos + 8, url.length);
+        //alert('shareid:'+shareid);
+        var poss = shareid.indexOf("&");
+        if (poss !== -1) {
+            realshareid = shareid.substr(0, poss);
+        } else {
+            realshareid = shareid;
+        }
         setTimeout(function() {
             $('.loading').addClass('none');
             $('.page1').removeClass('none');
         }, 500);
     });
-    //积分商城
-    $('.btn_score').on('tap', function(ev) {
-        ev.stopPropagation();
-        css(inner, "translateY", 0);
-        $('.fuli_lst').empty();
-        $('.s1').removeClass('none').siblings('.s2').addClass('none');
-    });
+    var btn_kanjia = false;
     //我的福利
     $('.btn_my').on('tap', function(ev) {
         ev.stopPropagation();
@@ -116,12 +119,36 @@ $(function() {
             }
         })
     });
-    $('.btn_close,.btn_cancel').on('tap', function() {
+    $('.btn_close').on('tap', function() {
         $(this).closest('.tk').addClass('none');
     });
-    $('.btn_rule,.btn_rule2').on('tap', function(ev) {
+    $('.btn_detail').on('tap', function(ev) {
         ev.stopPropagation();
         $('.tk_rule').removeClass('none');
+    });
+    $('.btn_kan').on('tap', function(ev) {
+        ev.stopPropagation();
+        if (btn_kanjia) {
+            $('.tk').addClass('none');
+            $('.tk_already').removeClass('none');
+        } else {
+            $('.tk').addClass('none');
+            $('.tk_suc').removeClass('none');
+        }
+    });
+    $('.tk_suc').on('tap', function(ev) {
+        ev.stopPropagation();
+    });
+    //立即领券
+    $('.btn_taken').on('tap', function(ev) {
+        //短信
+        ev.stopPropagation();
+        btn_kanjia = true;
+        $('.tk').addClass('none');
+        $('.tk_suc_taken').removeClass('none');
+    });
+    $('.tk_suc_taken .btn_close').on('tap', function() {
+        h5.moveTo(1, false);
     });
     //分享弹层
     $('.btn_share').on('tap', function(ev) {
@@ -131,14 +158,13 @@ $(function() {
     $(document).on('tap', function() {
         $('.tk_share').addClass('none')
     });
-
-
+    countDown()
 
     function countDown() {
         var countNum = $('#timecount').val() || 86400;
         var timer = setInterval(function() {
             countNum -= 1;
-            $('.countBox .countNum').html(timeStamp(countNum));
+            $('.countBox').html(timeStamp(countNum));
             if (countNum == 0) {
                 clearInterval(timer);
             }
@@ -148,20 +174,20 @@ $(function() {
     function timeStamp(second_time) {
         var time = parseInt(second_time);
         if (second_time < 60) {
-            time = '00' + " " + '00' + " " + '00';
+            time = '<span class="day">00</span>' + " " + '<span class="hour">00</span>' + " " + '<span class="min">00</span>';
         } else {
             if (parseInt(second_time) > 60) {
                 var second = parseInt(second_time) % 60;
                 var min = parseInt(second_time / 60);
-                time = '00' + " " + '00' + " " + toZero(min);
+                time = '<span class="day">00</span>' + " " + '<span class="hour">00</span>' + " " + '<span class="min">' + toZero(min) + '</span>';
                 if (min > 60) {
                     min = parseInt(second_time / 60) % 60;
                     var hour = parseInt(parseInt(second_time / 60) / 60);
-                    time = '00' + " " + toZero(hour) + " " + toZero(min) + " ";
+                    time = '<span class="day">00</span>' + " " + '<span class="hour">' + toZero(hour) + '</span>' + " " + '<span class="min">' + toZero(min) + '</span>' + " ";
                     if (hour > 24) {
                         hour = parseInt(parseInt(second_time / 60) / 60) % 24;
                         var day = parseInt(parseInt(parseInt(second_time / 60) / 60) / 24);
-                        time = toZero(day) + " " + toZero(hour) + " " + toZero(min);
+                        time = '<span class="day">' + toZero(day) + '</span>' + " " + '<span class="hour">' + toZero(hour) + '</span>' + " " + '<span class="min">' + toZero(min) + '</span>';
                     }
                 }
             }
