@@ -266,6 +266,23 @@ html, body {
 .btn_detail { display: block; width: 164px; height: 77px; position: absolute; top: 66%; left: 44%; background: url(../images/p1_3.png) no-repeat; }
 .btn_join { display: block; width: 338px; height: 323px; position: absolute; top: 63%; left: 28%; background: url(../images/p1_4.png) no-repeat; }
 
+/* 规则 */
+.tk.tk_rule { padding-bottom: 0;}
+.alert_rule{ width:100%; height: 100%;}
+.btn_now{ display: block; width: 335px; height: 207px; position: absolute; top: 77%; left: 24%; background: url(../images/btn_now.png) no-repeat;}
+.rules{ position:absolute; left: 7%; top: 7%;}
+/* 验证会员 */
+.info_box{ display: block; width: 599px; height: 809px; position: absolute; top: 10%; left: 4%; background: url(../images/tk_info.png) no-repeat;}
+.info_lst{ width: 480px; height: 280px; position: absolute;; left: 9%; top: 14%;}
+.info_lst li{ min-height: 76px;}
+.info_lst li:nth-of-type(1){ margin-bottom: 10px;}
+.info_lst .col1{ font-size: 32px; color: #585858; width: 130px; text-align: left; line-height: 65px; height: 65px;}
+.info_lst .ipt{ display: block; width: 350px; height:65px; border: 1px solid #fca431; background-color: #ffffff; text-indent: 20px; font-size: 32px; color: #000000;}
+.info_lst div{ float: left;;}
+.btn_yz{ display: block; font-size: 32px; color: #ffffff; background-color: #fca431; width: 224px; height: 50px; line-height: 50px;}
+.btn_vip{ display: block; width: 470px; height: 150px; position: absolute; top:77%; left: 13%; z-index: 10;}
+
+
 #box {
     background:#ffffff;
     position: absolute;
@@ -339,7 +356,6 @@ html, body {
 .tk { width: 100%; height: 100%; padding-bottom: 20px; background: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0; z-index: 999; color: #fff; text-align: center; }
     .close { display: inline-block; width: 41px; height: 41px; position: absolute; top: 15%; right: 1%; z-index: 1000; background: url(../images/close.png) no-repeat;  }
    .tkIn { width: 640px;  margin-top: 80px; background-repeat: no-repeat; background-position: center; }
-.ipt{ position: absolute; display: block; width:398px; height: 66px; font-size: 26px; color: #d0a160; text-indent: 20px; left: 12%;border: none; }
  .tk-img .box{ width: 600px; height: 400px; position: absolute; left: 3%; top:9%; border:2px solid #a45900; position: relative; overflow: hidden;}  
   .realImg{ max-width: 640px; max-height:600px;display: inline-block; position: absolute; left: 44%; top: 40%;}
 .tk-load {}
