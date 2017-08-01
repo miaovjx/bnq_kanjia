@@ -8,6 +8,8 @@
 // import '../js/pxloader-images.min.js';
 // import '../js/m.Tween.js';
 // import '../js/PageSlider.js';
+
+
 $(function() {
     //加载图
     var imgarr = ['images/bg1.jpg'];
@@ -45,58 +47,25 @@ $(function() {
         formal_price: '176',
         now_price: '149',
         tag1: true,
-        tag2: false
+        tag2: false,
+        goodsDetail: './images/goods1_d.png'
     }, {
         gtxt: "./images/gtxt2.png",
         goodsImg: "./images/goods2.png",
         formal_price: '1699',
         now_price: '1099',
         tag1: true,
-        tag2: false
+        tag2: false,
+        goodsDetail: './images/goods2_d.png'
     }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
         formal_price: '19.9',
         now_price: '1',
         tag1: false,
-        tag2: true
+        tag2: true,
+        goodsDetail: './images/goods7_d.png'
     }];
-    new Vue({
-        el: ".page_kan_a .goods_lst",
-        data: {
-            list: goodsLst
-        },
-        methods: {
-            show(todo) { //
-                var index = this.list.indexOf(todo);
-                this.list.splice(index, 1);
-            }
-        }
-    });
-    new Vue({
-        el: ".page_my_not .goods_lst",
-        data: {
-            list: goodsLst
-        },
-        methods: {
-            show(todo) { //
-                var index = this.list.indexOf(todo);
-                this.list.splice(index, 1);
-            }
-        }
-    });
-    new Vue({
-        el: ".page_my_done .goods_lst",
-        data: {
-            list: goodsLst
-        },
-        methods: {
-            show(todo) { //
-                var index = this.list.indexOf(todo);
-                this.list.splice(index, 1);
-            }
-        }
-    });
     var nextLst = [{
         ntxt: "./images/ntxt1.png",
         nextImg: "./images/next1.png"
@@ -107,13 +76,22 @@ $(function() {
         ntxt: "./images/ntxt3.png",
         nextImg: "./images/next3.png"
     }];
-    
     new Vue({
-        el: ".page_kan_a .next_lst",
+        el: ".mainwrap",
         data: {
-            list: nextLst
+            list: goodsLst,
+            nextLst: nextLst,
+            img: ''
+        },
+        methods: {
+            show(item) { //
+                $('.tk_detail').removeClass('none');
+                this.img = item.goodsDetail
+            }
         }
     });
+
+
 
     //我的福利
     $('.btn_my').on('tap', function(ev) {

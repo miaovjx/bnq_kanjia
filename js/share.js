@@ -33,31 +33,35 @@ $(function() {
         formal_price: '176',
         now_price: '149',
         tag1: true,
-        tag2: false
+        tag2: false,
+        goodsDetail: './images/goods1_d.png'
     }, {
         gtxt: "./images/gtxt2.png",
         goodsImg: "./images/goods2.png",
         formal_price: '1699',
         now_price: '1099',
         tag1: true,
-        tag2: false
+        tag2: false,
+        goodsDetail: './images/goods2_d.png'
     }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
         formal_price: '19.9',
         now_price: '1',
         tag1: false,
-        tag2: true
+        tag2: true,
+        goodsDetail: './images/goods7_d.png'
     }];
     new Vue({
-        el: ".page_share .goods_lst",
+        el: ".mainwrap",
         data: {
-            list: goodsLst
+            list: goodsLst,
+            img: ''
         },
         methods: {
-            show(todo) { //
-                var index = this.list.indexOf(todo);
-                this.list.splice(index, 1);
+            show(item) { //
+                $('.tk_detail').removeClass('none');
+                this.img = item.goodsDetail
             }
         }
     });

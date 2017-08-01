@@ -7,262 +7,265 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                
         </script>
     </head>
     <body>
-        <!-- load 预加载 -->
-        <div class="loading">
-            <div class="loading-text">
-                <span class="loading-text-words">L</span>
-                <span class="loading-text-words">O</span>
-                <span class="loading-text-words">A</span>
-                <span class="loading-text-words">D</span>
-                <span class="loading-text-words">I</span>
-                <span class="loading-text-words">N</span>
-                <span class="loading-text-words">G</span>
-            </div>
-        </div>
-        <div class="page-wrap ">
-            <!-- 1 首页 -->
-            <div class="page page1 none" data-lock-prev="true" data-lock-next="true">
-                <div class="p1_box">
-                    <img class="p1_2" src="images/p1_2.png" alt=""/>
-                    <img class="p1_1" src="images/p1_1.png" alt=""/>
-                    <a href="javascript:;" class="btn_join"></a>
-                    <a href="javascript:;" class="btn_detail btn_detail_a"></a>
+        <div class="mainwrap">
+            <!-- load 预加载 -->
+            <div class="loading">
+                <div class="loading-text">
+                    <span class="loading-text-words">L</span>
+                    <span class="loading-text-words">O</span>
+                    <span class="loading-text-words">A</span>
+                    <span class="loading-text-words">D</span>
+                    <span class="loading-text-words">I</span>
+                    <span class="loading-text-words">N</span>
+                    <span class="loading-text-words">G</span>
                 </div>
             </div>
-            <!-- 2  -->
-            <div class="page page2 page_kan_a" data-lock-prev="true" data-lock-next="true">
-                <div class="countBox clearfix"></div>
-                <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
-                <div class="goodsbox">
-                    <ul class="goods_lst clearfix">
-                        <li v-for="item in list">
-                            <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
-                            <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
-                            <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
-                        </li>
-                    </ul>
-                </div>
-                <a href="javascript:;" class="btn_kan"></a>
-                <div class="nextbox">
-                    <ul class="next_lst clearfix">
-                        <li v-for="item in list">
-                            <div class="swiperimg"> <img class="nextImg" :src="item.nextImg" alt=""/> </div>
-                            <div class="text"><img class="ntxt" :src="item.ntxt" alt=""/></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- 3 本人砍价未集齐 -->
-            <div class="page page3 page_my_not" data-lock-prev="true" data-lock-next="true">
-                <div class="countBox clearfix"></div>
-                <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
-                <div class="goodsbox">
-                    <ul class="goods_lst clearfix">
-                        <li v-for="item in list">
-                            <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
-                            <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
-                            <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
-                            <div class="now_price " :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="person_box_a">
-                    <div class="user_box clearfix">
-                        <img class="userImg fl" src="images/user.jpg" alt=""/>
-                        <ul class="user_msg fr">
-                            <li class="user_name">Aaronxu乃又皿</li>
-                            <li class="user_txt">你已累计砍价<span class="yellow">88元</span>，再邀请<span class="yellow">5位好友
-                            </span>帮忙就砍价成功咯～</li>
-                        </ul>
+            <div class="page-wrap ">
+                <!-- 1 首页 -->
+                <div class="page page1 none" data-lock-prev="true" data-lock-next="true">
+                    <div class="p1_box">
+                        <img class="p1_2" src="images/p1_2.png" alt=""/>
+                        <img class="p1_1" src="images/p1_1.png" alt=""/>
+                        <a href="javascript:;" class="btn_join"></a>
+                        <a href="javascript:;" class="btn_detail btn_detail_a"></a>
                     </div>
-                    <ul class="user_img_lst clearfix">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <a href="javascript:;" class="btn_share"></a>
-                    <a href="javascript:;" class="btn_take"></a>
                 </div>
-                <img class="iconsBom" src="images/icons2.png" alt=""/>
-            </div>
-            <!-- 4 本人砍价 -->
-            <div class="page page4 page_my_done" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
-                <div class="page_inner2" style="position: relative; height: 1800px;">
+                <!-- 2  -->
+                <div class="page page2 page_kan_a" data-lock-prev="true" data-lock-next="true">
                     <div class="countBox clearfix"></div>
                     <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
                     <div class="goodsbox">
                         <ul class="goods_lst clearfix">
-                            <li v-for="item in list">
+                            <li v-for="item in list" @click="show(item)">
                                 <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
                                 <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
                                 <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
-                                <div class="now_price" :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
+                                <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
                             </li>
                         </ul>
                     </div>
-                    <div class="person_box_b">
-                        <!-- 未集齐 start-->
-                        <div class="user_box clearfix user_not ">
-                            <img class="userImg fl" src="images/user.jpg" alt=""/>
-                            <ul class="user_msg fr">
-                                <li class="user_name">Aaronxu乃又皿</li>
-                                <li class="user_txt">好友已累计砍去<span class="yellow">XX元</span>，<br />再邀请<span class="yellow"><span>5</span>位好友
-                                </span>就砍价成功咯!</li>
-                            </ul>
-                            <a href="javascript:;" class="btn_share"></a>
-                            <a href="javascript:;" class="btn_take"></a>
-                        </div>
-                        <!-- 未集齐 end -->
-                        <!-- 集齐 start-->
-                        <div class="user_box clearfix user_done none">
-                            <img class="userImg fl" src="images/user.jpg" alt=""/>
-                            <ul class="user_msg fr">
-                                <li class="user_name">Aaronxu乃又皿</li>
-                                <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
-                            </ul>
-                            <a href="javascript:;" class="btn_share"></a>
-                            <a href="javascript:;" class="btn_taken"></a>
-                        </div>
-                        <!-- 集齐 end-->
-                        <img class="banner" src="images/banner.png" alt=""/>
-                        <ul class="friend_lst">
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
-                                <div class="col2">Wink</div>
-                                <div class="col3">￥<strong>50</strong></div>
+                    <a href="javascript:;" class="btn_kan"></a>
+                    <div class="nextbox">
+                        <ul class="next_lst clearfix">
+                            <li v-for="item in nextLst">
+                                <div class="swiperimg"> <img class="nextImg" :src="item.nextImg" alt=""/> </div>
+                                <div class="text"><img class="ntxt" :src="item.ntxt" alt=""/></div>
                             </li>
                         </ul>
                     </div>
                 </div>
+                <!-- 3 本人砍价未集齐 -->
+                <div class="page page3 page_my_not" data-lock-prev="true" data-lock-next="true">
+                    <div class="countBox clearfix"></div>
+                    <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
+                    <div class="goodsbox">
+                        <ul class="goods_lst clearfix">
+                            <li v-for="item in list" @click="show(item)">
+                                <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                                <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
+                                <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                                <div class="now_price " :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="person_box_a">
+                        <div class="user_box clearfix">
+                            <img class="userImg fl" src="images/user.jpg" alt=""/>
+                            <ul class="user_msg fr">
+                                <li class="user_name">Aaronxu乃又皿</li>
+                                <li class="user_txt">你已累计砍价<span class="yellow">88元</span>，再邀请<span class="yellow">5位好友
+                                </span>帮忙就砍价成功咯～</li>
+                            </ul>
+                        </div>
+                        <ul class="user_img_lst clearfix">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <a href="javascript:;" class="btn_share"></a>
+                        <a href="javascript:;" class="btn_take"></a>
+                    </div>
+                    <img class="iconsBom" src="images/icons2.png" alt=""/>
+                </div>
+                <!-- 4 本人砍价 -->
+                <div class="page page4 page_my_done" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
+                    <div class="page_inner2" style="position: relative; height: 1800px;">
+                        <div class="countBox clearfix"></div>
+                        <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
+                        <div class="goodsbox">
+                            <ul class="goods_lst clearfix">
+                                <li v-for="item in list" @click="show(item)">
+                                    <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                                    <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
+                                    <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                                    <div class="now_price" :class="{tag1: item.tag1,tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="person_box_b">
+                            <!-- 未集齐 start-->
+                            <div class="user_box clearfix user_not ">
+                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <ul class="user_msg fr">
+                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_txt">好友已累计砍去<span class="yellow">XX元</span>，<br />再邀请<span class="yellow"><span>5</span>位好友
+                                    </span>就砍价成功咯!</li>
+                                </ul>
+                                <a href="javascript:;" class="btn_share"></a>
+                                <a href="javascript:;" class="btn_take"></a>
+                            </div>
+                            <!-- 未集齐 end -->
+                            <!-- 集齐 start-->
+                            <div class="user_box clearfix user_done none">
+                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <ul class="user_msg fr">
+                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
+                                </ul>
+                                <a href="javascript:;" class="btn_share"></a>
+                                <a href="javascript:;" class="btn_taken"></a>
+                            </div>
+                            <!-- 集齐 end-->
+                            <img class="banner" src="images/banner.png" alt=""/>
+                            <ul class="friend_lst">
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                                <li class="clearfix">
+                                    <div class="col1"><img class="userImg" src="images/user.jpg" alt=""/></div>
+                                    <div class="col2">Wink</div>
+                                    <div class="col3">￥<strong>50</strong></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 弹框 -->
+            <div class="tk tk-load none">
+                <div class="tkIn">
+                    <img src="images/loading.gif" height="60" width="60" alt=""/>
+                    <p class="tlWrd">拼命加载中，请耐心等待</p>
+                </div>
+            </div>
+            <!-- 商品详情弹窗 -->
+            <div class="tk tk_detail none">
+                <div class="alert_detail">
+                    <div class="swiperimg">
+                        <img class="goods_d_Img" :src="img" alt=""/>
+                    </div>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <!-- 分享 -->
+            <div class="tk tk_share none">
+                <div class="tkIn ">
+                    <img class="floating shareImg" src="images/shareImg.png" alt=""/>
+                </div>
+            </div>
+            <!-- 活动规则 -->
+            <div class="tk tk_rule none">
+                <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
+                <img class="rules" src="images/rule.png" alt=""/>
+                <a href="javascript:;" class="btn_now"></a>
+            </div>
+            <!-- 留资 -->
+            <div class="tk tk_info none">
+                <div class="tkIn ">
+                    <div class="info_box">
+                        <ul class="info_lst">
+                            <li class="clearfix">
+                                <div class="col1">手机号：</div>
+                                <div class="col2">
+                                    <input type="text" class="ipt phone" />
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <a href="javascript:;" class="btn_yz fr">获取验证码</a>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col1">验证码：</div>
+                                <div class="col2">
+                                    <input type="text" class="ipt code" />
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="javascript:;" class="btn_vip"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 已领过券 -->
+            <div class="tk tk_already none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="sorrytxt" src="images/sorrytxt.png" alt=""/>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <!-- 兑换成功弹窗 -->
+            <div class="tk tk_suc none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="suctxt" src="images/suctxt.png" alt=""/>
+                    <div class="kans"><strong>88</strong>元</div>
+                </div>
+            </div>
+            <!-- 成功领券弹窗 -->
+            <div class="tk tk_suc_taken none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <div id="orientLayer" class="mod-orient-layer">
+                <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
+                    <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
+                </div>
+            </div>
+            <div class="qr-box">
+                <div id="qr-box__img" class="qr-box__img"></div>
+                <div class="qr-box__thumb qr-box__thumb_default"
+                style="background-image:url(//wximg.gtimg.com/wxp/wxmoment-source/img/weixin-logo.png)"></div>
+                <div id="qr-box__thumb" class="qr-box__thumb"></div>
+                <div class="qr-box__text">微信扫一扫<br>手机浏览效果更佳</div>
             </div>
         </div>
     </body>
-    <!-- 弹框 -->
-    <div class="tk tk-load none">
-        <div class="tkIn">
-            <img src="images/loading.gif" height="60" width="60" alt=""/>
-            <p class="tlWrd">拼命加载中，请耐心等待</p>
-        </div>
-    </div>
-    <!-- 分享 -->
-    <div class="tk tk_share none">
-        <div class="tkIn ">
-            <img class="floating shareImg" src="images/shareImg.png" alt=""/>
-        </div>
-    </div>
-    <!-- 活动规则 -->
-    <div class="tk tk_rule none">
-        <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
-        <img class="rules" src="images/rule.png" alt=""/>
-        <a href="javascript:;" class="btn_now"></a>
-    </div>
-    <!-- 留资 -->
-    <div class="tk tk_info none">
-        <div class="tkIn ">
-            <div class="info_box">
-                <ul class="info_lst">
-                    <li class="clearfix">
-                        <div class="col1">手机号：</div>
-                        <div class="col2">
-                            <input type="text" class="ipt phone" />
-                        </div>
-                    </li>
-                    <li class="clearfix">
-                        <a href="javascript:;" class="btn_yz fr">获取验证码</a>
-                    </li>
-                    <li class="clearfix">
-                        <div class="col1">验证码：</div>
-                        <div class="col2">
-                            <input type="text" class="ipt code" />
-                        </div>
-                    </li>
-                </ul>
-                <a href="javascript:;" class="btn_vip"></a>
-            </div>
-        </div>
-    </div>
-    <!-- 已领过券 -->
-    <div class="tk tk_already none">
-        <div class="tkIn ">
-            <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-            <img class="sorrytxt" src="images/sorrytxt.png" alt=""/>
-            <a href="javascript:;" class="btn_close"></a>
-        </div>
-    </div>
-    <!-- 兑换成功弹窗 -->
-    <div class="tk tk_suc none">
-        <div class="tkIn ">
-            <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-            <img class="suctxt" src="images/suctxt.png" alt=""/>
-            <div class="kans"><strong>88</strong>元</div>
-        </div>
-    </div>
-    <!-- 商品详情弹窗 -->
-    <div class="tk tk_detail none">
-        <div class="alert_detail">
-            <div class="swiperimg">
-                <img class="goods_d_Img" src="images/goods6_d.png" alt=""/>
-            </div>
-            <a href="javascript:;" class="btn_close"></a>
-        </div>
-    </div>
-    <!-- 成功领券弹窗 -->
-    <div class="tk tk_suc_taken none">
-        <div class="tkIn ">
-            <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-            <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
-            <a href="javascript:;" class="btn_close"></a>
-        </div>
-    </div>
-    <div id="orientLayer" class="mod-orient-layer">
-        <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
-            <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
-        </div>
-    </div>
-    <div class="qr-box">
-        <div id="qr-box__img" class="qr-box__img"></div>
-        <div class="qr-box__thumb qr-box__thumb_default"
-        style="background-image:url(//wximg.gtimg.com/wxp/wxmoment-source/img/weixin-logo.png)"></div>
-        <div id="qr-box__thumb" class="qr-box__thumb"></div>
-        <div class="qr-box__text">微信扫一扫<br>手机浏览效果更佳</div>
-    </div>
     <!-- js -->
     <script src="js/jweixin-1.0.0.js"></script>
     <script src="js/vue.js"></script>
     <script src="js/zepto.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/pxloader-images.min.js"></script>
     <script src="js/m.Tween.js"></script>
     <script src="js/PageSlider.js"></script>
