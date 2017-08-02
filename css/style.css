@@ -263,7 +263,7 @@ html, body {
 .p1_box{ width: 100%; height: 850px; position: absolute; left: 0; top: 0;}
 .p1_2{ position: absolute; left: 0%; top: 20px; z-index: 1;}
 .p1_1{ position: absolute; left: 10%; top: 40%; z-index: 2;}
-.btn_detail_a { display: block; width: 164px; height: 77px; position: absolute; top: 66%; left: 44%; background: url(../images/p1_3.png) no-repeat; }
+.btn_detail_a { display: block; width: 164px; height: 77px; position: absolute; top: 66%; left: 44%; background: url(../images/p1_3.png) no-repeat; z-index: 30;}
 .btn_join { display: block; width: 338px; height: 323px; position: absolute; top: 63%; left: 28%; background: url(../images/p1_4.png) no-repeat; }
 
 /* 规则 */
@@ -366,9 +366,9 @@ html, body {
 .btn_share{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share.png) no-repeat;}
 .btn_take{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_take.png) no-repeat;}
 .btn_taken{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_taken.png) no-repeat;}
-.page_my_not .btn_take{ left: 58px; bottom: -68px;}
-.page_my_not .btn_share{ left: 310px; bottom: -68px;}
-.page_my_not .btn_taken{ left: 310px; bottom: -68px;}
+.page_my_not .btn_take{ left: 310px; bottom: -68px;}
+.page_my_not .btn_share{ left: 58px; bottom: -68px;}
+.page_my_not .btn_taken{ left: 58px; bottom: -68px;}
 .shareImg{ position: absolute; right: 2%; top: 4%;}
 .iconsBom { position: absolute; left: 3%; bottom: 10px;}
 

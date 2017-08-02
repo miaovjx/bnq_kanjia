@@ -8,8 +8,6 @@
 // import '../js/pxloader-images.min.js';
 // import '../js/m.Tween.js';
 // import '../js/PageSlider.js';
-
-
 $(function() {
     //加载图
     var imgarr = ['images/bg1.jpg'];
@@ -41,7 +39,7 @@ $(function() {
         }, 500);
     });
     var btn_kanjia = false;
-    var goodsLst = [{
+    var goodsLst = [{ //第一波
         gtxt: "./images/gtxt1.png",
         goodsImg: "./images/goods1.png",
         formal_price: '176',
@@ -66,6 +64,56 @@ $(function() {
         tag2: true,
         goodsDetail: './images/goods7_d.png'
     }];
+    /* var goodsLst = [{ //第二波
+        gtxt: "./images/ntxt1.png",
+        goodsImg: "./images/next1.png",
+        formal_price: '1539',
+        now_price: '999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods3_d.png'
+    }, {
+        gtxt: "./images/ntxt2.png",
+        goodsImg: "./images/next2.png",
+        formal_price: '1380',
+        now_price: '999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods4_d.png'
+    }, {
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true,
+        goodsDetail: './images/goods7_d.png'
+    }];*/
+    /* var goodsLst = [{ //第三波
+        gtxt: "./images/ntxt4.png",
+        goodsImg: "./images/next4.png",
+        formal_price: '2099',
+        now_price: '1999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods5_d.png'
+    }, {
+        gtxt: "./images/ntxt5.png",
+        goodsImg: "./images/next5.png",
+        formal_price: '2480',
+        now_price: '1899',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods6_d.png'
+    },{
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true,
+        goodsDetail: './images/goods7_d.png'
+    }];*/
     var nextLst = [{
         ntxt: "./images/ntxt1.png",
         nextImg: "./images/next1.png"
@@ -90,20 +138,51 @@ $(function() {
             }
         }
     });
-
-
-
-    //我的福利
-    $('.btn_my').on('tap', function(ev) {
+    $('.btn_now,.btn_join').on('tap', function(ev) {
         ev.stopPropagation();
-        css(inner, "translateY", 0);
-        $('.fuli_lst').empty();
-        $('.s2').removeClass('none').siblings('.s1').addClass('none');
-        //请求个人信息接口
+        $('.tk_info').removeClass('none');
+    });
+    var tel = '';
+    //加入会员，集客砍价
+    $('.btn_vip').on('tap', function(ev) {
+        ev.stopPropagation();
+        tel = $('.phone').val();
+        var check = $('.code').val();
+        console.log('tel:' + tel, 'check:' + check);
+        //第三方注册接口：
         $.ajax({
-            url: 'index.php?s=Home/Index/info',
+            url: 'http://gz2.bnq.com.cn/Web/register.html',
             type: 'POST',
-            data: {},
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            data: {
+                tel: tel,
+                check: check,
+                agree: 1
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                $('.tk-load').removeClass('none');
+            },
+            success: function(data) {
+                $('.tk-load').addClass('none');
+                if (data.code == 1) {
+                    alert('注册成功!');
+                } else {
+                    if (data.code == 0) {
+                        alert('验证码不正确!');
+                    } else if (data.code == 2) {
+                        alert('您已经是会员了!');
+                    }
+                }
+            }
+        })
+        $.ajax({
+            url: 'index.php?mod=index&ac=info',
+            type: 'POST',
+            data: {
+                phone: tel
+            },
             dataType: 'json',
             beforeSend: function() {
                 $('.tk-load').removeClass('none');
@@ -111,40 +190,33 @@ $(function() {
             success: function(data) {
                 $('.tk-load').addClass('none');
                 if (data.result == true) {
-                    //alert('返回个人信息成功');
-                    var score = data.score || 0;
-                    var html = '';
-                    console.log("score:" + score);
-                    $('.userScore').html(score); //个人积分
-                    if (data.order.length > 0) {
-                        //有福利
-                        $('.hasFuLi').removeClass('none').siblings('.noFuLi').addClass('none');
-                        //福利列表
-                        for (var i = 0; i < data.order.length; i++) {
-                            if (data.order[i].state == 0) { //未兑换
-                                html += '<li><img class="liquan" src="' + data.order[i].path + '"/><img class="exchange noexchange" src="images/noexchange.png"/><div class="exchangeTxt clearfix"><div class="fuli_name fl">' + data.order[i].giftname + '</div><div class="fuli_code fr">兑换码：<span class="codes">' + data.order[i].code + '</span></div></div></li>'
-                            } else if (data.order[i].state == 1) { //已兑换
-                                html += '<li><img class="liquan" src="' + data.order[i].path + '"/><img class="exchange exchanged" src="images/exchanged.png"/><div class="exchangeTxt clearfix"><div class="fuli_name fl">' + data.order[i].giftname + '</div><div class="fuli_code fr">兑换码：<span class="codes">' + data.order[i].code + '</span></div></div></li>'
-                            }
-                        }
-                        $('.fuli_lst').append(html);
-                    } else {
-                        //空的
-                        $('.hasFuLi').addClass('none').siblings('.noFuLi').removeClass('none');
+                    //alert('注册成功!');
+                } else {
+                    if (data.error == 1) {
+                        alert('参数不全!');
+                    } else if (data.error == 2) {
+                        alert('手机号格式错误!');
+                    } else if (data.error == 3) {
+                        alert('手机号已被使用!');
+                    } else if (data.error == 4) {
+                        alert('入库失败!');
                     }
-                } else {}
+                }
             }
         })
     });
-    //确认兑换接口
-    $('.tk_sure .btn_sure').on('tap', function(ev) {
+    //短信验证码接口
+    $('.btn_yz').on('tap', function(ev) {
         ev.stopPropagation();
-        var giftid = 0;
+        tel = $('.phone').val();
+        console.log('tel:' + tel);
         $.ajax({
-            url: 'index.php?s=Home/Index/exchange',
+            url: 'http://gz2.bnq.com.cn/Code/send.html',
             type: 'POST',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
             data: {
-                giftid: giftid
+                mobile: tel
             },
             dataType: 'json',
             beforeSend: function() {
@@ -152,22 +224,44 @@ $(function() {
             },
             success: function(data) {
                 $('.tk-load').addClass('none');
-                if (data.result == true) {
-                    //alert('兑换成功');
-                    var code = data.code;
-                    $('.tk_suc').removeClass('none');
+                if (data.state == 'success') {
+                    alert('手机验证码发送成功!');
                 } else {
-                    if (data.error == 1) {
-                        alert('参数不全');
-                    } else if (data.error == 2) {
-                        alert('已无礼品');
-                    } else if (data.error == 3) {
-                        //  alert('积分不足');
-                        $('.tk_short').removeClass('none');
-                    } else if (data.error == 4) {
-                        alert('购买失败');
-                    } else if (data.error == 404) {
-                        alert('参数不全');
+                    alert('手机验证码发送失败，请稍后再试');
+                }
+            }
+        })
+    });
+    //立即领券 
+    $('.btn_taken').on('tap', function(ev) {
+        ev.stopPropagation();
+        var idNum = 8876;
+        console.log('tel:' + tel);
+        btn_kanjia = true;
+        $('.tk').addClass('none');
+        $.ajax({
+            url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
+            type: 'POST',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            data: {
+                id: idNum,
+                mobile: tel
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                $('.tk-load').removeClass('none');
+            },
+            success: function(data) {
+                $('.tk-load').addClass('none');
+                if (data.status == 'success') {
+                    // alert('优惠券发放成功!');
+                    $('.tk_suc_taken').removeClass('none');
+                } else {
+                    if (data.status == 'SUCCESS') {
+                        alert('手机验证码发送失败，请稍后再试');
+                    } else if (data.status == 'FAIL') {
+                        alert('最大领券次数为1次');
                     }
                 }
             }
@@ -180,8 +274,41 @@ $(function() {
         ev.stopPropagation();
         $('.tk_rule').removeClass('none');
     });
+    //砍价接口
     $('.btn_kan').on('tap', function(ev) {
         ev.stopPropagation();
+        var shareid = '';
+        $.ajax({
+            url: 'index.php?mod=index&ac=cut',
+            type: 'POST',
+            data: {
+                shareid: shareid
+            },
+            dataType: 'json',
+            beforeSend: function() {
+                $('.tk-load').removeClass('none');
+            },
+            success: function(data) {
+                $('.tk-load').addClass('none');
+                if (data.result == true) {
+                    var money = data.money
+                } else {
+                    if (data.error == 1) {
+                        alert('参数不全');
+                    } else if (data.error == 2) {
+                        alert('已砍过');
+                    } else if (data.error == 404) {
+                        alert('非法进入');
+                    } else if (data.error == 3) {
+                        alert('已砍满额（可领券）');
+                    } else if (data.error == 4) {
+                        alert('已砍满额（可领券）');
+                    } else if (data.error == 5) {
+                        alert('入库失败');
+                    }
+                }
+            }
+        })
         if (btn_kanjia) {
             $('.tk').addClass('none');
             $('.tk_already').removeClass('none');
@@ -192,14 +319,6 @@ $(function() {
     });
     $('.tk_suc').on('tap', function(ev) {
         ev.stopPropagation();
-    });
-    //立即领券
-    $('.btn_taken').on('tap', function(ev) {
-        //短信
-        ev.stopPropagation();
-        btn_kanjia = true;
-        $('.tk').addClass('none');
-        $('.tk_suc_taken').removeClass('none');
     });
     $('.tk_suc_taken .btn_close').on('tap', function() {
         h5.moveTo(1, false);
