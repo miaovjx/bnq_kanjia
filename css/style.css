@@ -269,8 +269,8 @@ html, body {
 /* 规则 */
 .tk.tk_rule { padding-bottom: 0;}
 .alert_rule{ width:100%; height: 100%;}
-.btn_now{ display: block; width: 335px; height: 207px; position: absolute; top: 77%; left: 24%; background: url(../images/btn_now.png) no-repeat;}
-.rules{ position:absolute; left: 7%; top: 7%;}
+.btn_now{ display: block; width: 335px; height: 207px; position: absolute; bottom: -10px; left: 24%; background: url(../images/btn_now.png) no-repeat;}
+.rules{ position:absolute; left: 7%; top: 2%;}
 /* 验证会员 */
 .info_box{ display: block; width: 599px; height: 809px; position: absolute; top: 10%; left: 4%; background: url(../images/tk_info.png) no-repeat;}
 .info_lst{ width: 480px; height: 280px; position: absolute;; left: 9%; top: 14%;}
@@ -284,7 +284,6 @@ html, body {
 
 
 #box {
-    background:#ffffff;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -293,14 +292,14 @@ html, body {
     overflow: hidden;
     background-size: 100% 100%;
 }
-#inner{ background:#ffffff; padding-bottom: 0px; position: relative; }
+#inner{ padding-bottom: 0px; position: relative; min-height: 100%; }
 #list { position: relative; }
 
 
 /*p2*/
 .page2 { background: url(../images/bg2.jpg) no-repeat; display: block; position: relative; left: 0; top: 0;}
 .btn_detail_b { display: block;  position: absolute; top:10px; right: 10px; z-index: 10; font-size: 24px; color: #cd5e01;}
-.goodsbox{ width: 612px; height: 520px; background: url(../images/goodsbox.png) no-repeat; position: absolute; left: 14px; top: 116px; z-index: 10;}
+.goodsbox{ width: 612px; height: 520px; background: url(../images/goodsbox.png) no-repeat; position: absolute; left: 14px; top: 102px; z-index: 10;}
 .btn_kan{ width: 374px; height: 323px; background: url(../images/btn_kan.png) no-repeat; position: absolute; left: 100px; top:46%; z-index: 8;}
 .nextbox{ width: 599px; height: 244px; background: url(../images/nextbox.png) no-repeat; position: absolute; left: 20px; top: 75%; z-index: 8; }
 .goods_lst { position: relative; top: 83px; left: 23px;}
@@ -334,7 +333,7 @@ html, body {
     align-items: center;
 }
 .selloutIcon{ width: 100%; height: auto; position: absolute; left: 0%; top: 34%; z-index: 20; }
-.countBox{ position: absolute; left: 255px; top: 118px; z-index: 20;}
+.countBox{ position: absolute; left: 255px; top: 104px; z-index: 20;}
 .countBox span{ font-size: 42px; color: #714e2f; float: left; display: block; margin-right: 40px; }
 .countBox span:nth-of-type(2){ margin-right: 64px; }
 .next_lst { position: relative; top: 50px; left: 23px; width: 560px; }
@@ -351,7 +350,7 @@ html, body {
 .tk_suc .kans{ width: 100%; text-align: center; color: #ff9933; font-size: 52px; position: absolute; left: 0; top: 34%;}
 .tk_suc strong{ font-size: 148px; font-weight: bold; }
 .alert_detail{ display: block; width: 612px; height: 520px; position: absolute; background: url(../images/tk_detail.png) no-repeat; left: 6px; top: 20%;}
-.alert_detail .btn_close{ display: block; width: 62px; height: 62px; position: absolute; right: 8%; top: 0%; z-index: 20;}
+.alert_detail .btn_close{ display: block; width: 62px; height: 62px; position: absolute; right: 8%; top: 0%; z-index: 60;}
 .alert_detail .swiperimg{ width: 100%; height:386px; position: absolute; left: 0; top: 70px;}
 .goods_d_Img{ max-width: 550px; max-height:386px;}
 
@@ -373,7 +372,7 @@ html, body {
 .page_my_not .btn_share{ left: 58px; bottom: -68px;}
 .page_my_not .btn_taken{ left: 58px; bottom: -68px;}
 .shareImg{ position: absolute; right: 2%; top: 4%;}
-.iconsBom { position: absolute; left: 3%; bottom: 10px;}
+.iconsBom { position: absolute; left: 3%; bottom: 1%;}
 
 /*p4*/
 .page_my_done {background:#d6cbb2 ;}

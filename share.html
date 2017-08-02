@@ -7,11 +7,15 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                        
         </script>
     </head>
     <body>
         <div class="mainwrap">
+            <input type="hidden" class="countdownnum" value="<?php echo $countdown;?>"/>  <!-- 倒计时秒数 -->
+            <input type="hidden" class="states" value="<?php echo $state;?>"/>  <!-- 状态 -->
+            <input type="hidden" class="shareid" value="<?php echo $shareid;?>"/>  <!-- openid -->
+            <input type="hidden" class="cut" value="<?php echo $cut;?>"/>  <!-- >0 已帮忙看过  -->
             <!-- load 预加载 -->
             <div class="loading">
                 <div class="loading-text">
@@ -45,9 +49,9 @@
                         <div class="person_box_b">
                             <!-- 未集齐 start-->
                             <div class="user_box clearfix user_not ">
-                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
                                 <ul class="user_msg fr">
-                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_name"><?php echo $nickname;?></li>
                                     <li class="user_txt">好友已累计砍去<span class="yellow">XX元</span>，<br />再邀请<span class="yellow"><span>5</span>位好友
                                     </span>就砍价成功咯!</li>
                                 </ul>
@@ -57,9 +61,9 @@
                             <!-- 未集齐 end -->
                             <!-- 集齐 start-->
                             <div class="user_box clearfix user_done none">
-                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
                                 <ul class="user_msg fr">
-                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_name"><?php echo $nickname;?></li>
                                     <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
                                 </ul>
                                 <a href="javascript:;" class="btn_share_help"></a>

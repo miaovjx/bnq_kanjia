@@ -7,11 +7,17 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                
+                                                                                                                                                                                                                                                                                                                                                                                                                                        
         </script>
     </head>
     <body>
         <div class="mainwrap">
+
+        <input type="hidden" class="countdownnum" value="<?php echo $countdown;?>"/>  <!-- 倒计时秒数 -->
+        <input type="hidden" class="states" value="<?php echo $state;?>"/>  <!-- 状态 -->
+        <input type="hidden" class="openid" value="<?php echo $openid;?>"/>  <!-- openid -->
+        <input type="hidden" class="login" value="<?php echo $login;?>"/>  <!-- openid -->
+          <input type="hidden" class="cut" value="<?php echo $cut;?>"/>  <!-- openid -->
             <!-- load 预加载 -->
             <div class="loading">
                 <div class="loading-text">
@@ -51,7 +57,7 @@
                         </ul>
                     </div>
                     <a href="javascript:;" class="btn_kan"></a>
-                    <div class="nextbox">
+                    <div class="nextbox" v-show="nextLst.length">
                         <ul class="next_lst clearfix">
                             <li v-for="item in nextLst">
                                 <div class="swiperimg"> <img class="nextImg" :src="item.nextImg" alt=""/> </div>
@@ -62,41 +68,45 @@
                 </div>
                 <!-- 3 本人砍价未集齐 -->
                 <div class="page page3 page_my_not" data-lock-prev="true" data-lock-next="true">
-                    <div class="countBox clearfix"></div>
-                    <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
-                    <div class="goodsbox">
-                        <ul class="goods_lst clearfix">
-                            <li v-for="item in list" @click="show(item)">
-                                <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
-                                <div class="swiperimg"> <img class="goodsImg" :src="item.sellout?item.selloutImg:item.goodsImg" alt=""/>
-                                    <img v-show="item.sellout" class="selloutIcon" src="images/outicon.png" alt=""/>
+                    <div id="box">
+                        <div class="" id="inner" style="position: relative; ">
+                            <div class="countBox clearfix"></div>
+                            <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
+                            <div class="goodsbox">
+                                <ul class="goods_lst clearfix">
+                                    <li v-for="item in list" @click="show(item)">
+                                        <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                                        <div class="swiperimg"> <img class="goodsImg" :src="item.sellout?item.selloutImg:item.goodsImg" alt=""/>
+                                            <img v-show="item.sellout" class="selloutIcon" src="images/outicon.png" alt=""/>
+                                        </div>
+                                        <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div><a href="javascript:;" class="plusBtn"></a></div>
+                                        <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="person_box_a">
+                                <div class="user_box clearfix">
+                                    <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
+                                    <ul class="user_msg fr">
+                                        <li class="user_name"><?php echo $nickname;?></li>
+                                        <li class="user_txt">你已累计砍价<span class="yellow">88元</span>，再邀请<span class="yellow">5位好友
+                                        </span>帮忙就砍价成功咯～</li>
+                                    </ul>
                                 </div>
-                                <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div><a href="javascript:;" class="plusBtn"></a></div>
-                                <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="person_box_a">
-                        <div class="user_box clearfix">
-                            <img class="userImg fl" src="images/user.jpg" alt=""/>
-                            <ul class="user_msg fr">
-                                <li class="user_name">Aaronxu乃又皿</li>
-                                <li class="user_txt">你已累计砍价<span class="yellow">88元</span>，再邀请<span class="yellow">5位好友
-                                </span>帮忙就砍价成功咯～</li>
-                            </ul>
+                                <ul class="user_img_lst clearfix">
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                    <li></li>
+                                </ul>
+                                <a href="javascript:;" class="btn_share"></a>
+                                <a href="javascript:;" class="btn_take"></a>
+                            </div>
+                            <img class="iconsBom" src="images/icons2.png" alt=""/>
                         </div>
-                        <ul class="user_img_lst clearfix">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <a href="javascript:;" class="btn_share"></a>
-                        <a href="javascript:;" class="btn_take"></a>
                     </div>
-                    <img class="iconsBom" src="images/icons2.png" alt=""/>
                 </div>
                 <!-- 4 本人砍价 -->
                 <div class="page page4 page_my_done" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
@@ -118,9 +128,9 @@
                         <div class="person_box_b">
                             <!-- 未集齐 start-->
                             <div class="user_box clearfix user_not ">
-                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
                                 <ul class="user_msg fr">
-                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_name"><?php echo $nickname;?></li>
                                     <li class="user_txt">好友已累计砍去<span class="yellow">XX元</span>，<br />再邀请<span class="yellow"><span>5</span>位好友
                                     </span>就砍价成功咯!</li>
                                 </ul>
@@ -130,9 +140,9 @@
                             <!-- 未集齐 end -->
                             <!-- 集齐 start-->
                             <div class="user_box clearfix user_done none">
-                                <img class="userImg fl" src="images/user.jpg" alt=""/>
+                                <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
                                 <ul class="user_msg fr">
-                                    <li class="user_name">Aaronxu乃又皿</li>
+                                    <li class="user_name"><?php echo $nickname;?></li>
                                     <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
                                 </ul>
                                 <a href="javascript:;" class="btn_share"></a>
@@ -242,7 +252,7 @@
                 <div class="tkIn ">
                     <img class="alert_bg" src="images/alert_bg.png" alt=""/>
                     <img class="suctxt" src="images/suctxt.png" alt=""/>
-                    <div class="kans"><strong>88</strong>元</div>
+                    <div class="kans"><strong>0</strong>元</div>
                 </div>
             </div>
             <!-- 成功领券弹窗 -->
