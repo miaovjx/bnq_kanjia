@@ -304,14 +304,16 @@ html, body {
 .btn_kan{ width: 374px; height: 323px; background: url(../images/btn_kan.png) no-repeat; position: absolute; left: 100px; top:46%; z-index: 8;}
 .nextbox{ width: 599px; height: 244px; background: url(../images/nextbox.png) no-repeat; position: absolute; left: 20px; top: 75%; z-index: 8; }
 .goods_lst { position: relative; top: 83px; left: 23px;}
+.goods_lst>li{ position: relative;}
 .goods_lst>li>div{ margin-bottom: 6px;} 
 .goods_lst>li{ text-align: center; width: 188px; float: left;}
-.goods_lst>li .formal_price{ font-size: 20px; position: relative; text-align: center;}
+.goods_lst>li .formal_price{ font-size: 20px; position: relative; text-indent: -42px;}
 .goods_lst>li .now_price.tag1{ width: 164px;  display: inline-block; background: url(../images/tag1.png) no-repeat left center; text-indent: 96px; font-size: 20px; font-weight: bold; color: #ff9933; } 
 .goods_lst>li .now_price.tag2{ width: 164px;  display: inline-block; background: url(../images/tag2.png) no-repeat left center; text-indent: 96px; font-size: 20px; font-weight: bold; color: #e90000; } 
 .goods_lst>li .now_price span{ font-weight: normal; font-size: 18px;}
 .goods_lst>li .text{ font-size: 18px; color: #666666;  color: #000000; font-weight: bold; height: 48px;}
-.line{ display: inline-block; width: 70%; height: 2px; background-color: #666666; position: absolute; left: 18%; bottom: 12px;}
+.line{ display: inline-block; width: 70%; height: 2px; background-color: #666666; position: absolute; left: 3%; bottom: 12px;}
+.plusBtn{ display: inline-block; width: 44px; height: 44px; background: url(../images/plus.png) no-repeat center center;   position: absolute; right: 2%; bottom: -9px;}
 .user_lst .userScore{ color: #e60012; font-weight: bold; }
 .goods_lst .goodsImg{ max-width: 200px; max-height:220px; }
 .goods_lst .swiperimg{ height:220px;}
@@ -331,6 +333,7 @@ html, body {
     -webkit-align-items: center;
     align-items: center;
 }
+.selloutIcon{ width: 100%; height: auto; position: absolute; left: 0%; top: 34%; z-index: 20; }
 .countBox{ position: absolute; left: 255px; top: 118px; z-index: 20;}
 .countBox span{ font-size: 42px; color: #714e2f; float: left; display: block; margin-right: 40px; }
 .countBox span:nth-of-type(2){ margin-right: 64px; }

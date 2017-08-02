@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                
         </script>
     </head>
     <body>
@@ -34,8 +34,10 @@
                             <ul class="goods_lst clearfix">
                                 <li v-for="item in list" @click="show(item)">
                                     <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
-                                    <div class="swiperimg"> <img class="goodsImg" :src="item.goodsImg" alt=""/> </div>
-                                    <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div></div>
+                                    <div class="swiperimg"> <img class="goodsImg" :src="item.sellout?item.selloutImg:item.goodsImg" alt=""/>
+                                        <img v-show="item.sellout" class="selloutIcon" src="images/outicon.png" alt=""/>
+                                    </div>
+                                    <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div><a href="javascript:;" class="plusBtn"></a></div>
                                     <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
                                 </li>
                             </ul>

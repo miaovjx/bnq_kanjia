@@ -27,14 +27,16 @@ $(function() {
         }, 500);
     });
     var btn_frined_take = true;
-    var goodsLst = [{
+    var goodsLst = [{ //第一波
         gtxt: "./images/gtxt1.png",
         goodsImg: "./images/goods1.png",
         formal_price: '176',
         now_price: '149',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods1_d.png'
+        goodsDetail: './images/goods1_d.png',
+        selloutImg: "./images/goodsout1.png",
+        sellout: false
     }, {
         gtxt: "./images/gtxt2.png",
         goodsImg: "./images/goods2.png",
@@ -42,7 +44,9 @@ $(function() {
         now_price: '1099',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods2_d.png'
+        goodsDetail: './images/goods2_d.png',
+        selloutImg: "./images/goodsout2.png",
+        sellout: false
     }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
@@ -50,8 +54,72 @@ $(function() {
         now_price: '1',
         tag1: false,
         tag2: true,
-        goodsDetail: './images/goods7_d.png'
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
     }];
+    /* var goodsLst = [{ //第二波
+        gtxt: "./images/ntxt1.png",
+        goodsImg: "./images/next1.png",
+        formal_price: '1539',
+        now_price: '999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods3_d.png',
+        selloutImg: "./images/nextsout1.png",
+        sellout: false
+    }, {
+        gtxt: "./images/ntxt2.png",
+        goodsImg: "./images/next2.png",
+        formal_price: '1380',
+        now_price: '999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods4_d.png',
+        selloutImg: "./images/nextsout2.png",
+        sellout: false
+    }, {
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true,
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
+    }];*/
+    /* var goodsLst = [{ //第三波
+        gtxt: "./images/ntxt4.png",
+        goodsImg: "./images/next4.png",
+        formal_price: '2099',
+        now_price: '1999',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods5_d.png',
+        selloutImg: "./images/nextsout4.png",
+        sellout: false
+    }, {
+        gtxt: "./images/ntxt5.png",
+        goodsImg: "./images/next5.png",
+        formal_price: '2480',
+        now_price: '1899',
+        tag1: true,
+        tag2: false,
+        goodsDetail: './images/goods6_d.png',
+        selloutImg: "./images/nextsout5.png",
+        sellout: true
+    }, {
+        gtxt: "./images/gtxt3.png",
+        goodsImg: "./images/goods3.png",
+        formal_price: '19.9',
+        now_price: '1',
+        tag1: false,
+        tag2: true,
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
+    }];*/
     new Vue({
         el: ".mainwrap",
         data: {
@@ -60,8 +128,10 @@ $(function() {
         },
         methods: {
             show(item) { //
-                $('.tk_detail').removeClass('none');
-                this.img = item.goodsDetail
+                if (!item.sellout) {
+                    $('.tk_detail').removeClass('none');
+                    this.img = item.goodsDetail
+                }
             }
         }
     });

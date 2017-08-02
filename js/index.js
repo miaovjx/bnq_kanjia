@@ -46,7 +46,9 @@ $(function() {
         now_price: '149',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods1_d.png'
+        goodsDetail: './images/goods1_d.png',
+        selloutImg: "./images/goodsout1.png",
+        sellout: false
     }, {
         gtxt: "./images/gtxt2.png",
         goodsImg: "./images/goods2.png",
@@ -54,7 +56,9 @@ $(function() {
         now_price: '1099',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods2_d.png'
+        goodsDetail: './images/goods2_d.png',
+        selloutImg: "./images/goodsout2.png",
+        sellout: false
     }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
@@ -62,7 +66,9 @@ $(function() {
         now_price: '1',
         tag1: false,
         tag2: true,
-        goodsDetail: './images/goods7_d.png'
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
     }];
     /* var goodsLst = [{ //第二波
         gtxt: "./images/ntxt1.png",
@@ -71,7 +77,9 @@ $(function() {
         now_price: '999',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods3_d.png'
+        goodsDetail: './images/goods3_d.png',
+        selloutImg: "./images/nextsout1.png",
+        sellout: false
     }, {
         gtxt: "./images/ntxt2.png",
         goodsImg: "./images/next2.png",
@@ -79,7 +87,9 @@ $(function() {
         now_price: '999',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods4_d.png'
+        goodsDetail: './images/goods4_d.png',
+        selloutImg: "./images/nextsout2.png",
+        sellout: false
     }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
@@ -87,16 +97,20 @@ $(function() {
         now_price: '1',
         tag1: false,
         tag2: true,
-        goodsDetail: './images/goods7_d.png'
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
     }];*/
-    /* var goodsLst = [{ //第三波
+   /* var goodsLst = [{ //第三波
         gtxt: "./images/ntxt4.png",
         goodsImg: "./images/next4.png",
         formal_price: '2099',
         now_price: '1999',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods5_d.png'
+        goodsDetail: './images/goods5_d.png',
+        selloutImg: "./images/nextsout4.png",
+        sellout: false
     }, {
         gtxt: "./images/ntxt5.png",
         goodsImg: "./images/next5.png",
@@ -104,15 +118,19 @@ $(function() {
         now_price: '1899',
         tag1: true,
         tag2: false,
-        goodsDetail: './images/goods6_d.png'
-    },{
+        goodsDetail: './images/goods6_d.png',
+        selloutImg: "./images/nextsout5.png",
+        sellout: true
+    }, {
         gtxt: "./images/gtxt3.png",
         goodsImg: "./images/goods3.png",
         formal_price: '19.9',
         now_price: '1',
         tag1: false,
         tag2: true,
-        goodsDetail: './images/goods7_d.png'
+        goodsDetail: './images/goods7_d.png',
+        selloutImg: "./images/goodsout7.png",
+        sellout: false
     }];*/
     var nextLst = [{
         ntxt: "./images/ntxt1.png",
@@ -133,8 +151,10 @@ $(function() {
         },
         methods: {
             show(item) { //
-                $('.tk_detail').removeClass('none');
-                this.img = item.goodsDetail
+                if (!item.sellout) {
+                    $('.tk_detail').removeClass('none');
+                    this.img = item.goodsDetail
+                }
             }
         }
     });
@@ -142,31 +162,33 @@ $(function() {
         ev.stopPropagation();
         $('.tk_info').removeClass('none');
     });
+    var jq = jQuery.noConflict();
     var tel = '';
     //加入会员，集客砍价
-    $('.btn_vip').on('tap', function(ev) {
+    jq('.btn_vip').on('tap', function(ev) {
         ev.stopPropagation();
-        tel = $('.phone').val();
-        var check = $('.code').val();
+        tel = jq('.phone').val();
+        var check = jq('.code').val();
         console.log('tel:' + tel, 'check:' + check);
         //第三方注册接口：
-        $.ajax({
+        jq.ajax({
             url: 'http://gz2.bnq.com.cn/Web/register.html',
             type: 'POST',
             dataType: 'jsonp',
-            jsonp: 'jsoncallback',
+            jsonp: "callback",
+            jsonpCallback: "jsonpCallback",
             data: {
                 tel: tel,
                 check: check,
                 agree: 1
             },
-            dataType: 'json',
             beforeSend: function() {
-                $('.tk-load').removeClass('none');
+                jq('.tk-load').removeClass('none');
             },
             success: function(data) {
-                $('.tk-load').addClass('none');
-                if (data.code == 1) {
+                jq('.tk-load').addClass('none');
+                callback(data)
+                /* if (data.code == 1) {
                     alert('注册成功!');
                 } else {
                     if (data.code == 0) {
@@ -174,10 +196,10 @@ $(function() {
                     } else if (data.code == 2) {
                         alert('您已经是会员了!');
                     }
-                }
+                }*/
             }
         })
-        $.ajax({
+        /* $.ajax({
             url: 'index.php?mod=index&ac=info',
             type: 'POST',
             data: {
@@ -191,6 +213,8 @@ $(function() {
                 $('.tk-load').addClass('none');
                 if (data.result == true) {
                     //alert('注册成功!');
+                   $('.tk_info').addClass('none');
+                   h5.moveTo(1, false);
                 } else {
                     if (data.error == 1) {
                         alert('参数不全!');
@@ -203,7 +227,7 @@ $(function() {
                     }
                 }
             }
-        })
+        })*/
     });
     //短信验证码接口
     $('.btn_yz').on('tap', function(ev) {
@@ -214,11 +238,11 @@ $(function() {
             url: 'http://gz2.bnq.com.cn/Code/send.html',
             type: 'POST',
             dataType: 'jsonp',
-            jsonp: 'jsoncallback',
+            jsonp: "callback",
+            jsonpCallback: "jsonpCallback",
             data: {
                 mobile: tel
             },
-            dataType: 'json',
             beforeSend: function() {
                 $('.tk-load').removeClass('none');
             },
@@ -243,12 +267,11 @@ $(function() {
             url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
             type: 'POST',
             dataType: 'jsonp',
-            jsonp: 'jsoncallback',
+            jsonp: 'callback',
             data: {
                 id: idNum,
                 mobile: tel
             },
-            dataType: 'json',
             beforeSend: function() {
                 $('.tk-load').removeClass('none');
             },
