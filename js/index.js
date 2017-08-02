@@ -16,10 +16,10 @@ $(function() {
         pages: $('.page-wrap .page'),
         dev: 0, //
         // musicUrl: 'music/bg.mp3',
-        baseUrl: 'http://xk.guoxinad.com.cn/ad_invitation/'
+        baseUrl: 'http://xk.guoxinad.com.cn/bnq_bargain/'
     });
-    ////默认分享
-    h5.wxShare('宝贝性格', '解自家娃！', '宝贝性格测试', h5.baseUrl + 'index.php', h5.baseUrl + 'images/jsshare.jpg');
+    var openid = $('.openid').val();
+    h5.wxShare('宝贝性格', '解自家娃！', '宝贝性格测试', h5.baseUrl + 'index.php?mod=share&shareid=' + openid, h5.baseUrl + 'images/jsshare.jpg');
     // var url = document.location.href;
     // var pos = url.lastIndexOf("shareid=");
     // var shareid = '';
@@ -33,6 +33,9 @@ $(function() {
     //     realshareid = shareid;
     // }
     var goodsLst = '';
+    var numa = $('.numa').val();
+    var numb =$('.numb').val();
+    var numc =$('.numc').val(); 
     var goodsLst1 = [{ //第一波
         gtxt: "./images/gtxt1.png",
         goodsImg: "./images/goods1.png",
@@ -126,6 +129,30 @@ $(function() {
         selloutImg: "./images/goodsout7.png",
         sellout: false
     }];
+
+    console.log('numa:'+numa)
+     console.log('numb:'+numb)
+      console.log('numc:'+numc)
+
+    if(numa>=3000){
+        goodsLst1[0].sellout=true;
+        goodsLst2[0].sellout=true;
+        goodsLst3[0].sellout=true;
+    }
+    if(numb>=3000){
+        goodsLst1[1].sellout=true;
+        goodsLst2[1].sellout=true;
+        goodsLst3[1].sellout=true; 
+    }
+ if(numc>=1000){
+        goodsLst1[2].sellout=true;
+        goodsLst2[2].sellout=true;
+        goodsLst3[2].sellout=true; 
+    }
+
+
+
+
     var nextLst1 = [{
         ntxt: "./images/ntxt1.png",
         nextImg: "./images/next1.png"
@@ -152,7 +179,7 @@ $(function() {
             $('.loading').addClass('none');
             $('.page1').removeClass('none');
             countDown(); //倒计时开始
-            var states =  $('.states').val();
+            var states = $('.states').val();
             console.log("第" + states + "周");
             if (states == 1) {
                 goodsLst = goodsLst1;
@@ -182,16 +209,115 @@ $(function() {
                     }
                 }
             });
-            var btn_kanjia = false;
+        
             $('.btn_now,.btn_join').on('tap', function(ev) {
                 var login = $('.login').val();
+                var cut = $('.cut').val();
+                // alert(cut)
                 $('.tk_rule').addClass('none');
                 if (login > 0) { //无需注册
                     $('.page-wrap').css('-webkit-transform', 'translate(0, -100%)');
+                    if (cut > 0) {
+                        $.ajax({
+                            url: 'index.php?mod=index&ac=detail',
+                            type: 'POST',
+                            data: {},
+                            dataType: 'json',
+                            beforeSend: function() {
+                                $('.tk-load').removeClass('none');
+                            },
+                            success: function(data) {
+                                $('.tk-load').addClass('none');
+                                $('.kanmoney').html(data.allmoney);
+                                $('.kanfriend').html(data.num);
+                                var type =  data.type;
+                                var res = data.res;
+                                console.log(res);
+                                if (res) {
+                                   
+                                    for (var i = 0; i < res.length; i++) {
+                                        $('.user_img_lst li:eq(i)').append('<img class="userImg fl" src="' + res[i][headimgurl] + '" alt=""/>');
+                                    }
+                                  //  $('.user_img_lst').append(html);
+                                }
+                                if (type == 0) { //不可领券
+                                    $('.btn_taken').addClass('none');
+                                    $('.btn_take').removeClass('none')
+                                } else if (type == 1) { //可领券
+                                    $('.btn_taken').removeClass('none');
+                                    $('.btn_take').addClass('none')
+                                }
+                            }
+                        })
+                        $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                    }
                 } else {
                     $('.tk_info').removeClass('none');
                 }
             });
+                        //立即领券 
+           /* $('.btn_taken').on('tap', function(ev) {
+                ev.stopPropagation();
+                var idNum = 8876;
+                console.log('tel:' + tel);
+             
+                $('.tk').addClass('none');
+                $.ajax({
+                    url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
+                    type: 'POST',
+                    dataType: 'jsonp',
+                    jsonp: 'callback',
+                    data: {
+                        id: idNum,
+                        mobile: tel
+                    },
+                    beforeSend: function() {
+                        $('.tk-load').removeClass('none');
+                    },
+                    success: function(data) {
+                        $('.tk-load').addClass('none');
+                        if (data.status == 'success') {
+                            // alert('优惠券发放成功!');
+                            $('.tk_suc_taken').removeClass('none');
+                        } else {
+                            if (data.status == 'SUCCESS') {
+                                alert('手机验证码发送失败，请稍后再试');
+                            } else if (data.status == 'FAIL') {
+                                alert('最大领券次数为1次');
+                            }
+                        }
+                    }
+                })
+            });*/
+                $('.btn_taken').on('tap', function() { //获取优惠券接口
+                    $.ajax({
+                        url: 'index.php?mod=index&ac=getcoupon',
+                        type: 'POST',
+                        data: {},
+                        dataType: 'json',
+                        beforeSend: function() {
+                            $('.tk-load').removeClass('none');
+                        },
+                        success: function(data) {
+                            $('.tk-load').addClass('none');
+                            if (data.result == true) { //
+                                alert('领取成功！')
+                            } else { //
+                                if(data.error==1){
+                                 alert('已领过券')
+                                }else if(data.error==2){
+                                    alert('砍价金额未满')
+                                }else if(data.error==404){
+                                    alert('非法进入')
+                                }else if(data.error==3){
+                                    alert('未找到参与记录')
+                                }else if(data.error==4){
+                                    alert('领券失败')
+                                }
+                            }
+                        }
+                    })
+                });
             //滚动效果
             (function() {
                 var box = document.querySelector('#box');
@@ -415,11 +541,29 @@ $(function() {
                 })
             });
             //短信验证码接口
+            var yzbtn =true;
+            var yztimer =null;
+            var yzcont = 5;
             jq('.btn_yz').on('tap', function(ev) {
                 ev.stopPropagation();
                 tel = jq('.phone').val();
                 console.log('tel:' + tel);
-                jq.ajax({
+                if(yzbtn){
+                    yzbtn=false;
+                    $('.btn_yz').addClass('gray');
+                    yztimer=setInterval(function (){
+                        if(yzcont<=0){
+                            clearInterval(yztimer);
+                            yzcont=60
+                             $('.btn_yz').removeClass('gray');
+                             $('.btn_yz').html('获取验证码');
+                            yzbtn=true;
+                        }else{
+                            yzcont--
+                             $('.btn_yz').html('获取验证码('+ yzcont +')');
+                        }
+                    },1000)
+                    jq.ajax({
                     url: 'http://gz2.bnq.com.cn/Code/send.html',
                     type: 'POST',
                     dataType: 'jsonp',
@@ -439,41 +583,10 @@ $(function() {
                         }
                     }
                 })
+                }
+                
             });
-            //立即领券 
-            $('.btn_taken').on('tap', function(ev) {
-                ev.stopPropagation();
-                var idNum = 8876;
-                console.log('tel:' + tel);
-                btn_kanjia = true;
-                $('.tk').addClass('none');
-                $.ajax({
-                    url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
-                    type: 'POST',
-                    dataType: 'jsonp',
-                    jsonp: 'callback',
-                    data: {
-                        id: idNum,
-                        mobile: tel
-                    },
-                    beforeSend: function() {
-                        $('.tk-load').removeClass('none');
-                    },
-                    success: function(data) {
-                        $('.tk-load').addClass('none');
-                        if (data.status == 'success') {
-                            // alert('优惠券发放成功!');
-                            $('.tk_suc_taken').removeClass('none');
-                        } else {
-                            if (data.status == 'SUCCESS') {
-                                alert('手机验证码发送失败，请稍后再试');
-                            } else if (data.status == 'FAIL') {
-                                alert('最大领券次数为1次');
-                            }
-                        }
-                    }
-                })
-            });
+
             jq('.btn_close').on('tap', function(ev) {
                 ev.stopPropagation();
                 jq(this).closest('.tk').addClass('none');
@@ -521,16 +634,11 @@ $(function() {
                         }
                     }
                 })
-                // if (btn_kanjia) {
-                //     $('.tk').addClass('none');
-                //     $('.tk_already').removeClass('none');
-                // } else {
-                //     $('.tk').addClass('none');
-                //     $('.tk_suc').removeClass('none');
-                // }
+
             });
             $('.tk_suc').on('tap', function(ev) {
                 ev.stopPropagation();
+                $('.tk_suc').addClass('none');
                 $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
             });
             $('.tk_suc_taken .btn_close').on('tap', function() {
