@@ -265,7 +265,7 @@ html, body {
 .p1_1{ position: absolute; left: 10%; top: 40%; z-index: 2;}
 .btn_detail_a { display: block; width: 164px; height: 77px; position: absolute; top: 66%; left: 44%; background: url(../images/p1_3.png) no-repeat; z-index: 30;}
 .btn_join { display: block; width: 338px; height: 323px; position: absolute; top: 63%; left: 28%; background: url(../images/p1_4.png) no-repeat; }
-
+.mskj { position: absolute; left: 52px; top: 160px; z-index: 30;}
 /* 规则 */
 .tk.tk_rule { padding-bottom: 0;}
 .alert_rule{ width:100%; height: 100%;}
@@ -299,7 +299,7 @@ html, body {
 
 /*p2*/
 .page2 { background: url(../images/bg2.jpg) no-repeat; display: block; position: relative; left: 0; top: 0;}
-.btn_detail_b { display: block;  position: absolute; top:10px; right: 10px; z-index: 10; font-size: 24px; color: #cd5e01;}
+.btn_detail_b { display: block;  position: absolute; top:10px; right: 10px; z-index: 10; font-size: 24px; color: #cd5e01; width: 147px; height: 39px; line-height: 39px; text-align: right;}
 .goodsbox{ width: 612px; height: 520px; background: url(../images/goodsbox.png) no-repeat; position: absolute; left: 14px; top: 102px; z-index: 10;}
 .btn_kan{ width: 374px; height: 323px; background: url(../images/btn_kan.png) no-repeat; position: absolute; left: 100px; top:46%; z-index: 8;}
 .nextbox{ width: 599px; height: 244px; background: url(../images/nextbox.png) no-repeat; position: absolute; left: 20px; top: 75%; z-index: 8; }
@@ -307,12 +307,12 @@ html, body {
 .goods_lst>li{ position: relative;}
 .goods_lst>li>div{ margin-bottom: 6px;} 
 .goods_lst>li{ text-align: center; width: 188px; float: left;}
-.goods_lst>li .formal_price{ font-size: 20px; position: relative; text-indent: -42px;}
+.goods_lst>li .formal_price{ font-size: 20px; position: relative; text-indent: -28px;}
 .goods_lst>li .now_price.tag1{ width: 164px;  display: inline-block; background: url(../images/tag1.png) no-repeat left center; text-indent: 96px; font-size: 20px; font-weight: bold; color: #ff9933; } 
 .goods_lst>li .now_price.tag2{ width: 164px;  display: inline-block; background: url(../images/tag2.png) no-repeat left center; text-indent: 96px; font-size: 20px; font-weight: bold; color: #e90000; } 
 .goods_lst>li .now_price span{ font-weight: normal; font-size: 18px;}
 .goods_lst>li .text{ font-size: 18px; color: #666666;  color: #000000; font-weight: bold; height: 48px;}
-.line{ display: inline-block; width: 70%; height: 2px; background-color: #666666; position: absolute; left: 3%; bottom: 12px;}
+.line{ display: inline-block; width: 70%; height: 2px; background-color: #666666; position: absolute; left: 9%; bottom: 12px;}
 .plusBtn{ display: inline-block; width: 44px; height: 44px; background: url(../images/plus.png) no-repeat center center;   position: absolute; right: 2%; bottom: -9px;}
 .user_lst .userScore{ color: #e60012; font-weight: bold; }
 .goods_lst .goodsImg{ max-width: 200px; max-height:220px; }
@@ -363,9 +363,9 @@ html, body {
 .person_box_a.none{ display: none;} 
 .yellow{ color: #ff6600;}
 .userImg{ width: 117px; height: 117px; }
-.user_box{ width: 530px; height: 122px; margin: 0 auto;}
+.user_box{ width: 530px; height: 122px; margin: 0 auto; position: relative;}
 .page_my_not .user_done.none{ display: none;}
-.page_my_not .user_done .btn_share,.page_my_not .user_done .btn_taken{ bottom: -68px}
+.page_my_not .user_done .btn_share,.page_my_not .user_done .btn_taken{ bottom: -122px}
 .page_my_not .user_done{ display: block; width: 510px; height: 130px;  box-sizing: border-box; margin:40px auto 0; }
 .user_name{ font-size: 30px; color: #000000; margin-bottom: 10px;}
 .user_msg{ width: 380px;}
@@ -377,9 +377,9 @@ html, body {
 .btn_take{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_take.png) no-repeat;}
 .btn_taken{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_taken.png) no-repeat;}
 .page_share .btn_taken{  left: 308px; top: 166px; }  
-.page_my_not .btn_take{ left: 310px; bottom: -68px;}
-.page_my_not .btn_share{ left: 58px; bottom: -68px;}
-.page_my_not .btn_taken{ left: 310px; bottom: -68px;}
+.page_my_not .btn_take{ left: 318px; bottom: -122px;}
+.page_my_not .btn_share{ left: 65px; bottom: -122px;}
+.page_my_not .btn_taken{ left: 280px; bottom: -122px;}
 .shareImg{ position: absolute; right: 2%; top: 4%;}
 .iconsBom { position: absolute; left: 3%; bottom: 1%;}
 
@@ -391,17 +391,21 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.page_my_not .banner{ margin-top: 40px;}
+.page_my_not .banner{ margin-top: 110px;}
 .page_my_not .friend_lst{ top:40px;}
 .person_box_b.none{ display: none;}
-.person_box_b{background: url(../images/person_box_b.png) no-repeat; display: block; width: 599px; height: 1048px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 86px 24px; box-sizing: border-box;}
+.person_box_b{background: url(../images/scrolly.png) repeat-y; display: block; width: 599px; min-height: 480px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 183px 24px; box-sizing: border-box; }
+
+.boxtop{ width: 599px; height: 473px; background: url(../images/boxtop.png) no-repeat;position: absolute; left: 0; top: 0px;}
+.boxbtm{ width: 599px; height: 88px; background: url(../images/boxbtm.png) no-repeat;position: absolute; left: 0; bottom: -16px;}
+
 .page_my_done .btn_take{ left: 310px; top: 166px;}
 .page_my_done .btn_share{ left: 58px; top: 166px;}
 .page_my_done .btn_taken{ left: 310px; top: 166px;}
 .page_my_done .banner{ position: relative; top: 118px;}
 .friend_lst li{ margin-bottom: 24px;}
 .friend_lst .col1,.friend_lst .userImg{ width: 85px; height: 85px; margin-right: 10px;}
-.friend_lst .col2{ height: 85px; line-height: 85px; font-size: 30px; color: #000000; width: 100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.friend_lst .col2{ height: 85px; line-height: 85px; font-size: 30px; color: #000000; width: 124px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .friend_lst .col1,.friend_lst .col2{ float: left; }
 .friend_lst .col3{ float: right; font-size: 30px; color: #ff6600; height: 85px; line-height: 85px;}
 .friend_lst .col3 strong{ font-size: 52px; font-weight: bold;}
@@ -417,10 +421,13 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.page_share .btn_share_help,.btn_share_help2,.btn_share_help3{ left: 310px; top: 166px;}
-.page_share .btn_share_join{ left: 58px; top: 166px;}
-.page_share .banner{ position: relative; top: 118px;}
+.btn_share_help2,.btn_share_help3{ left: 310px; top: 166px;}
+.page_share .btn_share_help,.page_share .btn_share_help2{ left: 10px; top: 150px}
 
+.page_share .btn_share_join{ left: 280px; top: 150px;}
+.page_share .banner{ position: relative; top: 152px;}
+
+.tk_kan1 .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center; top: 8%; right: 7%;}
 .tk_suc_taken .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center;}
 .tk_suc_taken .tkIn{ margin-top:140px;}
 .tk_suc_taken .btn_close{ top: 17%; right: 7%;}
@@ -440,7 +447,7 @@ html, body {
 .btn_leave{display: block; width: 242px; height: 150px; background: url(../images/leave.png) no-repeat; position: absolute; left: 51%; top: 33%;}
 .tk_kan1 .tkIn,.tk_kan2 .tkIn { margin-top: 120px;}
 /* 弹框类 */
-.tk { width: 100%; height: 100%; padding-bottom: 20px; background: rgba(0, 0, 0, 0.8); position: absolute; top: 0; left: 0; z-index: 999; color: #fff; text-align: center; }
+.tk { width: 100%; height: 100%; padding-bottom: 20px; background: rgba(0, 0, 0, 0.9); position: absolute; top: 0; left: 0; z-index: 999; color: #fff; text-align: center; }
     .close { display: inline-block; width: 41px; height: 41px; position: absolute; top: 15%; right: 1%; z-index: 1000; background: url(../images/close.png) no-repeat;  }
    .tkIn { width: 640px;  margin-top: 80px; background-repeat: no-repeat; background-position: center; }
  .tk-img .box{ width: 600px; height: 400px; position: absolute; left: 3%; top:9%; border:2px solid #a45900; position: relative; overflow: hidden;}  

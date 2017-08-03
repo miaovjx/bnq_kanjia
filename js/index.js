@@ -16,7 +16,7 @@ $(function() {
         pages: $('.page-wrap .page'),
         dev: 0, //
         // musicUrl: 'music/bg.mp3',
-        baseUrl: 'http://xk.guoxinad.com.cn/bnq_bargain/'
+        baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     var state = $('.states').val();
     var openid = $('.openid').val();
@@ -207,7 +207,7 @@ $(function() {
             });
             $('.btn_now,.btn_join').on('tap', function(ev) {
                 var cut = $('.cut').val();
-                alert('cut' + cut);
+                // alert('cut' + cut);
                 $('.tk_rule').addClass('none');
                 if (cut > 0) { //已砍过价
                     $.ajax({
@@ -224,7 +224,7 @@ $(function() {
                             $('.kanfriend').html(data.num);
                             var type = data.type;
                             var res = data.res;
-                          /*  var res = [{
+                            /*var res = [{
                                 headimgurl: 'images/user.jpg'
                             }, {
                                 headimgurl: 'images/user.jpg'
@@ -302,39 +302,46 @@ $(function() {
             $('.btn_taken').on('tap', function() { //获取优惠券接口
                 if (takenBtn) {
                     takenBtn = false;
-                    $.ajax({
-                        url: 'index.php?mod=index&ac=getcoupon',
-                        type: 'POST',
-                        data: {},
-                        dataType: 'json',
-                        beforeSend: function() {
-                            $('.tk-load').removeClass('none');
-                        },
-                        success: function(data) {
-                            $('.tk-load').addClass('none');
-                            takenBtn = true;
-                            if (data.result == true) { //
-                                // alert('领取成功！')
-                                $('.tk_suc_taken').removeClass('none');
-                            } else { //
-                                if (data.error == 1) {
-                                    //alert('已领过券')
-                                    $('.tk_already').removeClass('none');
-                                } else if (data.error == 2) {
-                                    alert('砍价金额未满')
-                                } else if (data.error == 404) {
-                                    alert('非法进入')
-                                } else if (data.error == 3) {
-                                    alert('未找到参与记录')
-                                } else if (data.error == 4) {
-                                    alert('领券失败')
+                    if (numa >= 3000 && numb >= 3000 && numc >= 1000) {
+                        alert('优惠券已被领完！')
+                    } else {
+                        $.ajax({
+                            url: 'index.php?mod=index&ac=getcoupon',
+                            type: 'POST',
+                            data: {},
+                            dataType: 'json',
+                            beforeSend: function() {
+                                $('.tk-load').removeClass('none');
+                            },
+                            success: function(data) {
+                                $('.tk-load').addClass('none');
+                                takenBtn = true;
+                                if (data.result == true) { //
+                                    // alert('领取成功！')
+                                    $('.tk_suc_taken').removeClass('none');
+                                } else { //
+                                    if (data.error == 1) {
+                                        //alert('已领过券')
+                                        $('.tk_already').removeClass('none');
+                                    } else if (data.error == 2) {
+                                        alert('砍价金额未满')
+                                    } else if (data.error == 404) {
+                                        alert('非法进入')
+                                    } else if (data.error == 3) {
+                                        alert('未找到参与记录')
+                                    } else if (data.error == 4) {
+                                        alert('领券失败')
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
+                    }
                 } else {
                     alert('请勿重复提交!')
                 }
+            });
+            $('.mskj').on('animationend webkitAnimationEnd', function() {
+                $('.btn_join').removeClass('fadeInDown delay600').addClass('wobble')
             });
             //滚动效果
             (function() {
@@ -547,6 +554,19 @@ $(function() {
                     }
                 }
             });
+            /* 阻止ios默认活动*/
+            document.addEventListener('touchmove', stopSlide, false);
+            $('.page_my_not,.page_share').on('touchmove', function() { //释放默认事件
+                document.removeEventListener('touchmove', stopSlide, false);
+            }).on('touchend', function() {
+                document.addEventListener('touchmove', stopSlide, false);
+            });
+
+            function stopSlide(e) { //阻止页面默认行为
+                var e = window.event || e;
+                e.stopPropagation();
+                e.preventDefault();
+            };
             //短信验证码接口
             var yzbtn = true;
             var yztimer = null;
@@ -602,7 +622,7 @@ $(function() {
                 ev.stopPropagation();
                 jq(this).closest('.tk').addClass('none');
             });
-            $('.btn_detail').on('tap', function(ev) {
+            $('.btn_detail').on('click', function(ev) {
                 ev.stopPropagation();
                 $('.tk_rule').removeClass('none');
             });
@@ -610,57 +630,62 @@ $(function() {
             $('.btn_kan').on('tap', function(ev) {
                 ev.stopPropagation();
                 var login = $('.login').val();
-                alert('login:' + login);
-                alert('loginBtn:' + loginBtn);
+                // alert('login:' + login);
+                //  alert('loginBtn:' + loginBtn);
                 if (loginBtn) {
                     $('.tk_info').addClass('none');
                     var shareid = $('.openid').val();
-                    $.ajax({
-                        url: 'index.php?mod=index&ac=cut',
-                        type: 'POST',
-                        data: {
-                            shareid: shareid
-                        },
-                        dataType: 'json',
-                        beforeSend: function() {
-                            $('.tk-load').removeClass('none');
-                        },
-                        success: function(data) {
-                            $('.tk-load').addClass('none');
-                            if (data.result == true) {
-                                $('.tk').addClass('none');
-                                $('.tk_suc').removeClass('none');
-                                var money = data.money
-                                $('.kans strong').html(money);
-                                //$('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
-                            } else {
-                                if (data.error == 1) {
-                                    alert('参数不全');
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
-                                } else if (data.error == 2) {
-                                    alert('已砍过');
+                    if (shareid) {
+                        $.ajax({
+                            url: 'index.php?mod=index&ac=cut',
+                            type: 'POST',
+                            data: {
+                                shareid: shareid
+                            },
+                            dataType: 'json',
+                            beforeSend: function() {
+                                $('.tk-load').removeClass('none');
+                            },
+                            success: function(data) {
+                                $('.tk-load').addClass('none');
+                                if (data.result == true) {
+                                    $('.tk').addClass('none');
+                                    $('.tk_suc').removeClass('none');
+                                    var money = data.money
+                                    $('.kans strong').html(money);
                                     $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
-                                } else if (data.error == 404) {
-                                    alert('非法进入');
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
-                                } else if (data.error == 3) {
-                                    alert('已砍满额（可领券）');
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
-                                } else if (data.error == 4) {
-                                    alert('已砍满额（可领券）');
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
-                                } else if (data.error == 5) {
-                                    alert('入库失败');
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
+                                } else {
+                                    if (data.error == 1) {
+                                        alert('参数不全');
+                                        var ran = Math.random();
+                                        window.location.href = "index.php?" + ran
+                                    } else if (data.error == 2) {
+                                        alert('已砍过');
+                                        $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                                    } else if (data.error == 404) {
+                                        alert('非法进入');
+                                        var ran = Math.random();
+                                        window.location.href = "index.php?" + ran
+                                    } else if (data.error == 3) {
+                                        alert('已砍满额（可领券）');
+                                        var ran = Math.random();
+                                        window.location.href = "index.php?" + ran
+                                    } else if (data.error == 4) {
+                                        alert('已砍满额（可领券）');
+                                        var ran = Math.random();
+                                        window.location.href = "index.php?" + ran
+                                    } else if (data.error == 5) {
+                                        alert('入库失败');
+                                        var ran = Math.random();
+                                        window.location.href = "index.php?" + ran
+                                    }
                                 }
                             }
-                        }
-                    })
+                        })
+                    } else {
+                        alert('网络出错,请刷新重试')
+                        window.location.reload();
+                    }
                 } else {
                     if (login > 0) { //无需注册
                         $('.tk_info').addClass('none');
@@ -734,27 +759,27 @@ $(function() {
                         var type = data.type;
                         var res = data.res;
                         console.log(res);
-                      if (res) { //有好友帮砍
-                                $('.person_box_b').removeClass('none');
-                                $('.person_box_a').addClass('none');
-                                $('.page_my_not').css('overflowY', 'auto')
-                                if (type == 0) { //不可领券
-                                    $('.person_box_b .user_done').addClass('none');
-                                    $('.person_box_b .user_not').removeClass('none')
-                                } else if (type == 1) { //可领券
-                                    $('.person_box_b .user_done').removeClass('none');
-                                    $('.person_box_b .user_not').addClass('none')
-                                }
-                                $('.friend_lst').empty();
-                                var html = '';
-                                for (var i = 0; i < res.length; i++) {
-                                    html += '<li class="clearfix"><div class="col1"><img class="userImg" src="' + res[i].headimgurl + '" alt=""/></div><div class="col2">' + res[i].nickname + '</div><div class="col3">￥<strong>' + res[i].money + '</strong></div></li>'
-                                }
-                                $('.friend_lst').append(html);
-                            } else { //没有好友帮砍
-                                $('.person_box_b').addClass('none');
-                                $('.person_box_a').removeClass('none')
+                        if (res) { //有好友帮砍
+                            $('.person_box_b').removeClass('none');
+                            $('.person_box_a').addClass('none');
+                            $('.page_my_not').css('overflowY', 'auto')
+                            if (type == 0) { //不可领券
+                                $('.person_box_b .user_done').addClass('none');
+                                $('.person_box_b .user_not').removeClass('none')
+                            } else if (type == 1) { //可领券
+                                $('.person_box_b .user_done').removeClass('none');
+                                $('.person_box_b .user_not').addClass('none')
                             }
+                            $('.friend_lst').empty();
+                            var html = '';
+                            for (var i = 0; i < res.length; i++) {
+                                html += '<li class="clearfix"><div class="col1"><img class="userImg" src="' + res[i].headimgurl + '" alt=""/></div><div class="col2">' + res[i].nickname + '</div><div class="col3">￥<strong>' + res[i].money + '</strong></div></li>'
+                            }
+                            $('.friend_lst').append(html);
+                        } else { //没有好友帮砍
+                            $('.person_box_b').addClass('none');
+                            $('.person_box_a').removeClass('none')
+                        }
                         $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
                     }
                 })

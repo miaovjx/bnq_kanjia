@@ -16,10 +16,10 @@ $(function() {
         pages: $('.page-wrap .page'),
         dev: 0, //
         // musicUrl: 'music/bg.mp3',
-        baseUrl: 'http://xk.guoxinad.com.cn/bnq_bargain/'
+        baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     ////默认分享
-    var openid = $('.sha01876reid').val();
+    var openid = $('.shareid').val();
     var state = $('.states').val();
     // console.log(openid,state)
     h5.wxShare('和我一起砍价！1元拿走爆款啦！', '我在百安居抢爆款啦，各种商品一砍到底，就等你来帮我！', '和我一起砍价！1元拿走爆款啦！', h5.baseUrl + 'index.php?mod=share&shareid=' + openid + '&state=' + state, h5.baseUrl + 'images/jsshare.jpg');
@@ -151,15 +151,6 @@ $(function() {
         goodsLst = goodsLst3;
     }
     console.log('goodsLst:' + goodsLst);
-    var cut = $('.cut').val();
-    console.log('cut' + cut)
-    if (cut > 0) { //已帮忙砍过
-        $('.btn_share_help').addClass('none');
-        $('.btn_share_help2').removeClass('none');
-    } else {
-        $('.btn_share_help').removeClass('none');
-        $('.btn_share_help2').addClass('none');
-    }
     new Vue({
         el: ".mainwrap",
         data: {
@@ -175,10 +166,35 @@ $(function() {
             }
         }
     });
+    /* 阻止ios默认活动*/
+    document.addEventListener('touchmove', stopSlide, false);
+    $('.page_my_not,.page_share').on('touchmove', function() { //释放默认事件
+        document.removeEventListener('touchmove', stopSlide, false);
+    }).on('touchend', function() {
+        document.addEventListener('touchmove', stopSlide, false);
+    });
+
+    function stopSlide(e) { //阻止页面默认行为
+        var e = window.event || e;
+        e.stopPropagation();
+        e.preventDefault();
+    };
+    var cut = $('.cut').val();
+    var kanguo = false;
+    console.log('cut' + cut);
+    if (cut > 0) { //已帮忙砍过
+        kanguo = true;
+        $('.btn_share_help').removeClass('none');
+    } else {
+        kanguo = false;
+        $('.btn_share_help').removeClass('none');
+    }
     $.ajax({
         url: 'index.php?mod=share&ac=detail',
         type: 'POST',
-        data: {},
+        data: {
+            shareid: openid
+        },
         dataType: 'json',
         beforeSend: function() {
             $('.tk-load').removeClass('none');
@@ -202,9 +218,12 @@ $(function() {
                 headimgurl: 'images/user.jpg'
             }, {
                 headimgurl: 'images/user.jpg'
+            },{
+                headimgurl: 'images/user.jpg'
             }]*/
             console.log(type);
             $('.user_not').removeClass('none');
+            $('.btn_share_help').removeClass('none');
             if (res) {
                 var html = '';
                 for (var i = 0; i < res.length; i++) {
@@ -244,8 +263,9 @@ $(function() {
                                 if (data.error == 1) {
                                     alert('参数不全');
                                 } else if (data.error == 2) {
-                                    alert('已砍过');
-                                    $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                                    alert('您已经帮好友砍过价了');
+                                    var ran = Math.random();
+                                    window.location.href = "index.php?" + ran
                                 } else if (data.error == 404) {
                                     alert('非法进入');
                                 } else if (data.error == 3) {
@@ -269,34 +289,49 @@ $(function() {
     $('.btn_close,.btn_leave').on('click', function() {
         $(this).closest('.tk').addClass('none');
     });
+    $('.tk_kan1 .btn_close').on('click', function() {
+        window.location.reload();
+    });
     $('.btn_taken').on('tap', function() { //获取优惠券接口
-        $.ajax({
-            url: 'index.php?mod=index&ac=getcoupon',
-            type: 'POST',
-            data: {},
-            dataType: 'json',
-            beforeSend: function() {
-                $('.tk-load').removeClass('none');
-            },
-            success: function(data) {
-                $('.tk-load').addClass('none');
-                if (data.result == true) { //
-                    alert('领取成功！')
-                } else { //
-                    if (data.error == 1) {
-                        alert('已领过券')
-                    } else if (data.error == 2) {
-                        alert('砍价金额未满')
-                    } else if (data.error == 404) {
-                        alert('非法进入')
-                    } else if (data.error == 3) {
-                        alert('未找到参与记录')
-                    } else if (data.error == 4) {
-                        alert('领券失败')
+        if (takenBtn) {
+            takenBtn = false;
+            if (numa >= 3000 && numb >= 3000 && numc >= 1000) {
+                alert('优惠券已被领完！')
+            } else {
+                $.ajax({
+                    url: 'index.php?mod=index&ac=getcoupon',
+                    type: 'POST',
+                    data: {},
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $('.tk-load').removeClass('none');
+                    },
+                    success: function(data) {
+                        $('.tk-load').addClass('none');
+                        takenBtn = true;
+                        if (data.result == true) { //
+                            // alert('领取成功！')
+                            $('.tk_suc_taken').removeClass('none');
+                        } else { //
+                            if (data.error == 1) {
+                                //alert('已领过券')
+                                $('.tk_already').removeClass('none');
+                            } else if (data.error == 2) {
+                                alert('砍价金额未满')
+                            } else if (data.error == 404) {
+                                alert('非法进入')
+                            } else if (data.error == 3) {
+                                alert('未找到参与记录')
+                            } else if (data.error == 4) {
+                                alert('领券失败')
+                            }
+                        }
                     }
-                }
+                })
             }
-        })
+        } else {
+            alert('请勿重复提交!')
+        }
     });
     $('.btn_detail').on('tap', function(ev) {
         ev.stopPropagation();
