@@ -15,7 +15,7 @@ $(function() {
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
         dev: 0, //
-        // musicUrl: 'music/bg.mp3',
+         musicUrl: 'music/bg.mp3',
         baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     var state = $('.states').val();
@@ -264,40 +264,7 @@ $(function() {
                     $('.page-wrap').css('-webkit-transform', 'translate(0, -100%)');
                 }
             });
-            //立即领券 
-            /* $('.btn_taken').on('tap', function(ev) {
-                ev.stopPropagation();
-                var idNum = 8876;
-                console.log('tel:' + tel);
-             
-                $('.tk').addClass('none');
-                $.ajax({
-                    url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
-                    type: 'POST',
-                    dataType: 'jsonp',
-                    jsonp: 'callback',
-                    data: {
-                        id: idNum,
-                        mobile: tel
-                    },
-                    beforeSend: function() {
-                        $('.tk-load').removeClass('none');
-                    },
-                    success: function(data) {
-                        $('.tk-load').addClass('none');
-                        if (data.status == 'success') {
-                            // alert('优惠券发放成功!');
-                            $('.tk_suc_taken').removeClass('none');
-                        } else {
-                            if (data.status == 'SUCCESS') {
-                                alert('手机验证码发送失败，请稍后再试');
-                            } else if (data.status == 'FAIL') {
-                                alert('最大领券次数为1次');
-                            }
-                        }
-                    }
-                })
-            });*/
+            
             var takenBtn = true;
             $('.btn_taken').on('tap', function() { //获取优惠券接口
                 if (takenBtn) {
@@ -652,8 +619,10 @@ $(function() {
                                     $('.tk').addClass('none');
                                     $('.tk_suc').removeClass('none');
                                     var money = data.money
+                                     var num = data.num
                                     $('.kans strong').html(money);
-                                    $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                                    $('.suctxtdiv .frineds').html(num);
+                                 
                                 } else {
                                     if (data.error == 1) {
                                         alert('参数不全');
@@ -705,9 +674,11 @@ $(function() {
                                 if (data.result == true) {
                                     $('.tk').addClass('none');
                                     $('.tk_suc').removeClass('none');
-                                    var money = data.money
+                                     var money = data.money
+                                     var num = data.num
                                     $('.kans strong').html(money);
-                                    //$('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                                    $('.suctxtdiv .frineds').html(num);
+                                    
                                 } else {
                                     if (data.error == 1) {
                                         alert('参数不全');
@@ -741,7 +712,7 @@ $(function() {
                     }
                 }
             });
-            $('.tk_suc').on('tap', function(ev) {
+            $('.tk_suc,.tk_suc .btn_shares').on('tap', function(ev) {
                 ev.stopPropagation();
                 $('.tk_suc').addClass('none');
                 $.ajax({
@@ -794,6 +765,11 @@ $(function() {
                 ev.stopPropagation();
                 $('.tk_share').removeClass('none');
             });
+            $('.tk_suc .btn_share').on('tap', function(ev) {
+                ev.stopPropagation();
+                //$('.tk_suc').removeClass('none');
+            });
+
             $(document).on('tap', function() {
                 $('.tk_share').addClass('none')
             });

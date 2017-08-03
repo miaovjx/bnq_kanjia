@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
         <link rel="stylesheet" href="css/style.css?12112"/>
         <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
         </script>
     </head>
     <body>
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div class="page-wrap ">
-                <div class="page page3 page_my_not" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
+                <div class="page page3 page_my_not page_self" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
                     <div class="countBox clearfix"></div>
                     <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
                     <div class="goodsbox">
@@ -65,11 +65,11 @@
                             <li></li>
                             <li></li>
                         </ul>
-                        <a href="javascript:;" class="btn_share"></a>
-                        <a href="javascript:;" class="btn_take"></a>
+                        <a href="javascript:;" class="btn_share" style="left:50px;"></a>
+                        <a href="javascript:;" class="btn_take" style="left:296px;"></a>
                     </div>
                     <div class="person_box_b none">
-                    <div class="boxtop"></div>
+                        <div class="boxtop"></div>
                         <!-- 未集齐 start-->
                         <div class="user_box clearfix user_not none">
                             <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
@@ -97,116 +97,124 @@
                         <!-- 集齐 end-->
                         <img class="banner" src="images/banner.png" alt=""/>
                     <ul class="friend_lst"></ul>
-                     <div class="boxbtm"></div>
+                    <div class="boxbtm"></div>
                 </div>
             </div>
-       
-            </div>
-            <!-- 弹框 -->
-            <div class="tk tk-load none">
-                <div class="tkIn">
-                    <img src="images/loading.gif" height="60" width="60" alt=""/>
-                    <p class="tlWrd">拼命加载中，请耐心等待</p>
-                </div>
-            </div>
-            <!-- 商品详情弹窗 -->
-            <div class="tk tk_detail none">
-                <div class="alert_detail">
-                    <div class="swiperimg">
-                        <img class="goods_d_Img" :src="img" alt=""/>
-                    </div>
-                    <a href="javascript:;" class="btn_close"></a>
-                </div>
-            </div>
-            <!-- 分享 -->
-            <div class="tk tk_share none">
-                <div class="tkIn ">
-                    <img class="floating shareImg" src="images/shareImg.png" alt=""/>
-                </div>
-            </div>
-            <!-- 活动规则 -->
-            <div class="tk tk_rule none">
-                <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
-                <div id="box">
-                    <div class="" id="inner" style="position: relative; ">
-                        <img class="rules" src="images/rule.png" alt=""/>
-                    </div>
-                </div>
-                <a href="javascript:;" class="btn_now"></a>
-                <a href="javascript:;" class="btn_close"></a>
-            </div>
-            <!-- 留资 -->
-            <div class="tk tk_info none">
-                <div class="tkIn ">
-                    <div class="info_box">
-                        <ul class="info_lst">
-                            <li class="clearfix">
-                                <div class="col1">手机号：</div>
-                                <div class="col2">
-                                    <input type="text" class="ipt phone" />
-                                </div>
-                            </li>
-                            <li class="clearfix">
-                                <a href="javascript:;" class="btn_yz fr">获取验证码</a>
-                            </li>
-                            <li class="clearfix">
-                                <div class="col1">验证码：</div>
-                                <div class="col2">
-                                    <input type="tel" class="ipt code" />
-                                </div>
-                            </li>
-                        </ul>
-                        <a href="javascript:;" class="btn_vip"></a>
-                    </div>
-                </div>
-            </div>
-            <!-- 已领过券 -->
-            <div class="tk tk_already none">
-                <div class="tkIn ">
-                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-                    <img class="sorrytxt" src="images/sorrytxt.png" alt=""/>
-                    <a href="javascript:;" class="btn_close"></a>
-                </div>
-            </div>
-            <!-- 成功砍价弹窗 -->
-            <div class="tk tk_suc none">
-                <div class="tkIn ">
-                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-                    <img class="suctxt" src="images/suctxt.png" alt=""/>
-                    <div class="kans"><strong>0</strong>元</div>
-                    <!--               <a href="javascript:;" class="btn_close"></a> -->
-                </div>
-            </div>
-            <!-- 成功领券弹窗 -->
-            <div class="tk tk_suc_taken none">
-                <div class="tkIn ">
-                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
-                    <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
-                    <a href="javascript:;" class="btn_close"></a>
-                </div>
-            </div>
-            <div id="orientLayer" class="mod-orient-layer">
-                <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
-                    <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
-                </div>
-            </div>
-            <div class="qr-box">
-                <div id="qr-box__img" class="qr-box__img"></div>
-                <div class="qr-box__thumb qr-box__thumb_default"
-                style="background-image:url(//wximg.gtimg.com/wxp/wxmoment-source/img/weixin-logo.png)"></div>
-                <div id="qr-box__thumb" class="qr-box__thumb"></div>
-                <div class="qr-box__text">微信扫一扫<br>手机浏览效果更佳</div>
+
+        </div>
+        <!-- 弹框 -->
+        <div class="tk tk-load none">
+            <div class="tkIn">
+                <img src="images/loading.gif" height="60" width="60" alt=""/>
+                <p class="tlWrd">拼命加载中，请耐心等待</p>
             </div>
         </div>
-    </body>
-    <!-- js -->
-    <script src="js/jweixin-1.0.0.js"></script>
-    <script src="js/vue.js"></script>
-    <script src="js/zepto.min.js"></script>
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/pxloader-images.min.js"></script>
-    <script src="js/m.Tween.js"></script>
-    <script src="js/PageSlider.js"></script>
-    <script src="js/self.js"></script>
+        <!-- 商品详情弹窗 -->
+        <div class="tk tk_detail none">
+            <div class="alert_detail">
+                <div class="swiperimg">
+                    <img class="goods_d_Img" :src="img" alt=""/>
+                </div>
+                <a href="javascript:;" class="btn_close"></a>
+            </div>
+        </div>
+        <!-- 分享 -->
+        <div class="tk tk_share none">
+            <div class="tkIn ">
+                <img class="floating shareImg" src="images/shareImg.png" alt=""/>
+            </div>
+        </div>
+        <!-- 活动规则 -->
+        <div class="tk tk_rule none">
+            <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
+            <div id="box">
+                <div class="" id="inner" style="position: relative; ">
+                    <img class="rules" src="images/rule.png" alt=""/>
+                </div>
+            </div>
+            <a href="javascript:;" class="btn_now"></a>
+            <a href="javascript:;" class="btn_close"></a>
+        </div>
+        <!-- 留资 -->
+        <div class="tk tk_info none">
+            <div class="tkIn ">
+                <div class="info_box">
+                    <ul class="info_lst">
+                        <li class="clearfix">
+                            <div class="col1">手机号：</div>
+                            <div class="col2">
+                                <input type="text" class="ipt phone" />
+                            </div>
+                        </li>
+                        <li class="clearfix">
+                            <a href="javascript:;" class="btn_yz fr">获取验证码</a>
+                        </li>
+                        <li class="clearfix">
+                            <div class="col1">验证码：</div>
+                            <div class="col2">
+                                <input type="tel" class="ipt code" />
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="javascript:;" class="btn_vip"></a>
+                </div>
+            </div>
+        </div>
+        <!-- 已领过券 -->
+        <div class="tk tk_already none">
+            <div class="tkIn ">
+                <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                <img class="sorrytxt" src="images/sorrytxt.png" alt=""/>
+                <a href="javascript:;" class="btn_close"></a>
+            </div>
+        </div>
+        <!-- 已砍过价 -->
+        <div class="tk tk_already_kan none">
+            <div class="tkIn ">
+                <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                <div class=""></div>
+                <a href="javascript:;" class="btn_close"></a>
+            </div>
+        </div>
+        <!-- 成功砍价弹窗 -->
+        <div class="tk tk_suc none">
+            <div class="tkIn ">
+                <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                <img class="suctxt" src="images/suctxt.png" alt=""/>
+                <div class="kans"><strong>0</strong>元</div>
+                <!--               <a href="javascript:;" class="btn_close"></a> -->
+            </div>
+        </div>
+        <!-- 成功领券弹窗 -->
+        <div class="tk tk_suc_taken none">
+            <div class="tkIn ">
+                <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
+                <a href="javascript:;" class="btn_close"></a>
+            </div>
+        </div>
+        <div id="orientLayer" class="mod-orient-layer">
+            <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
+                <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
+            </div>
+        </div>
+        <div class="qr-box">
+            <div id="qr-box__img" class="qr-box__img"></div>
+            <div class="qr-box__thumb qr-box__thumb_default"
+            style="background-image:url(//wximg.gtimg.com/wxp/wxmoment-source/img/weixin-logo.png)"></div>
+            <div id="qr-box__thumb" class="qr-box__thumb"></div>
+            <div class="qr-box__text">微信扫一扫<br>手机浏览效果更佳</div>
+        </div>
+    </div>
+</body>
+<!-- js -->
+<script src="js/jweixin-1.0.0.js"></script>
+<script src="js/vue.js"></script>
+<script src="js/zepto.min.js"></script>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/pxloader-images.min.js"></script>
+<script src="js/m.Tween.js"></script>
+<script src="js/PageSlider.js"></script>
+<script src="js/self.js"></script>
 </body>
 </html>

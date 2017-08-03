@@ -235,7 +235,7 @@
 /* 弹动进入 */
 .bounceIn{-webkit-animation:bounceIn .75s ease both;animation:bounceIn .75s ease both}
 .bounceInDown{-webkit-animation:bounceInDown 1s ease both;animation:bounceInDown 1s ease both}
-.bounceInLeft{-webkit-animation:bounceInLeft 1s ease both;animation:bounceInLeft 1s ease both}
+.bounceInLeft{-webkit-animation:bounceInLeft 0.5s ease both;animation:bounceInLeft 0.5s ease both}
 .bounceInRight{-webkit-animation:bounceInRight 1s ease both;animation:bounceInRight 1s ease both}
 .bounceInUp{-webkit-animation:bounceInUp 1s ease both;animation:bounceInUp 1s ease both}
 

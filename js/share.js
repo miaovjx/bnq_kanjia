@@ -15,7 +15,7 @@ $(function() {
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
         dev: 0, //
-        // musicUrl: 'music/bg.mp3',
+        musicUrl: 'music/bg.mp3',
         baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     ////默认分享
@@ -269,9 +269,11 @@ $(function() {
                                 } else if (data.error == 404) {
                                     alert('非法进入');
                                 } else if (data.error == 3) {
-                                    alert('已砍满额（可领券）');
+                                     $('.tk_kan2').removeClass('none');
+                            // alert('已砍满额（可领券）');
                                 } else if (data.error == 4) {
-                                    alert('已砍满额（可领券）');
+                                      $('.tk_kan2').removeClass('none');
+                                    //alert('已砍满额（可领券）');
                                 } else if (data.error == 5) {
                                     alert('入库失败');
                                 }

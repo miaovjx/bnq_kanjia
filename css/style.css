@@ -106,7 +106,7 @@ html, body {
 .u-btn-play {
     position: absolute;
     top: 20px;
-    right: 20px;
+    left: 20px;
     width: 54px;
     height: 54px;
     display: block;
@@ -333,6 +333,10 @@ html, body {
     -webkit-align-items: center;
     align-items: center;
 }
+.suctxtdiv{font-size: 30px; color: #585858; width: 440px; position: absolute; left: 100px; top: 260px; text-align: left;}
+.tk_suc .btn_shares{ left: 196px; top: 430px; display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share.png) no-repeat;}
+.tk_suc .suctxtdiv strong{font-size: 48px; }
+.tk_suc .suctxtdiv .kans{ width: auto; position: relative;}
 .selloutIcon{ width: 100%; height: auto; position: absolute; left: 0%; top: 34%; z-index: 20; }
 .countBox{ position: absolute; left: 255px; top: 108px; z-index: 20;}
 .countBox span{ font-size: 42px; color: #714e2f; float: left; display: block; margin-right: 46px; }
@@ -391,7 +395,7 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.page_my_not .banner{ margin-top: 110px;}
+.page_my_not .banner{ margin-top: 110px; position: relative; z-index: 20;}
 .page_my_not .friend_lst{ top:40px;}
 .person_box_b.none{ display: none;}
 .person_box_b{background: url(../images/scrolly.png) repeat-y; display: block; width: 599px; min-height: 480px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 183px 24px; box-sizing: border-box; }
@@ -446,6 +450,23 @@ html, body {
 .tk_kan2 .btn_close{ top: 15%; right: 7%; display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center;}
 .btn_leave{display: block; width: 242px; height: 150px; background: url(../images/leave.png) no-repeat; position: absolute; left: 51%; top: 33%;}
 .tk_kan1 .tkIn,.tk_kan2 .tkIn { margin-top: 120px;}
+
+.page_self .btn_share {
+    left: 12px;
+    bottom: -122px;
+}
+.page_self .btn_take {
+    left: 280px;
+    bottom: -122px;
+}
+
+
+
+
+
+
+
+
 /* 弹框类 */
 .tk { width: 100%; height: 100%; padding-bottom: 20px; background: rgba(0, 0, 0, 0.9); position: absolute; top: 0; left: 0; z-index: 999; color: #fff; text-align: center; }
     .close { display: inline-block; width: 41px; height: 41px; position: absolute; top: 15%; right: 1%; z-index: 1000; background: url(../images/close.png) no-repeat;  }
@@ -455,6 +476,8 @@ html, body {
 .tk-load {}
 .tk-load .tkIn { padding-top: 260px; }
     .tlWrd { padding-top: 20px; font-size: 24px; color: #ffffff; }
+
+
 
 
 /* 视频 */
