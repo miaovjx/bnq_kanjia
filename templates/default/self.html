@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi,width=640,user-scalable=0">
+        <title>爆款砍价1元购</title>
+        <link rel="stylesheet" href="css/gx-animate.min.css?12112"/>
+        <link rel="stylesheet" href="css/style.css?12112"/>
+        <script>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+        </script>
+    </head>
+    <body>
+        <div class="mainwrap">
+            <input type="hidden" class="countdownnum" value="<?php echo $countdown;?>"/>  <!-- 倒计时秒数 -->
+            <input type="hidden" class="states" value="<?php echo $state;?>"/>  <!-- 状态 -->
+            <input type="hidden" class="openid" value="<?php echo $openid;?>"/>  <!-- openid -->
+            <input type="hidden" class="login" value="<?php echo $login;?>"/>  <!-- openid -->
+            <input type="hidden" class="cut" value="<?php echo $cut;?>"/>  <!-- cut -->
+            <input type="hidden" class="numa" value="<?php echo $numa;?>"/>  <!--  -->
+            <input type="hidden" class="numb" value="<?php echo $numb;?>"/>  <!--  -->
+            <input type="hidden" class="numc" value="<?php echo $numc;?>"/>  <!--  -->
+            <!-- load 预加载 -->
+            <div class="loading">
+                <div class="loading-text">
+                    <span class="loading-text-words">L</span>
+                    <span class="loading-text-words">O</span>
+                    <span class="loading-text-words">A</span>
+                    <span class="loading-text-words">D</span>
+                    <span class="loading-text-words">I</span>
+                    <span class="loading-text-words">N</span>
+                    <span class="loading-text-words">G</span>
+                </div>
+            </div>
+            <div class="page-wrap ">
+                <div class="page page3 page_my_not" data-lock-prev="true" data-lock-next="true" style="-webkit-overflow-scrolling : touch">
+                    <div class="countBox clearfix"></div>
+                    <a href="javascript:;" class="btn_detail btn_detail_b">活动详情 &gt;</a>
+                    <div class="goodsbox">
+                        <ul class="goods_lst clearfix">
+                            <li v-for="item in list" @click="show(item)">
+                                <div class="text"><img class="gtxt" :src="item.gtxt" alt=""/></div>
+                                <div class="swiperimg"> <img class="goodsImg" :src="item.sellout?item.selloutImg:item.goodsImg" alt=""/>
+                                    <img v-show="item.sellout" class="selloutIcon" src="images/outicon.png" alt=""/>
+                                </div>
+                                <div class="formal_price">原价：{{item.formal_price}}元 <div class="line"></div><a href="javascript:;" class="plusBtn"></a></div>
+                                <div class="now_price" :class="{tag1: item.tag1 , tag2: item.tag2 }"><strong>{{item.now_price}}</strong><span>元</span></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="person_box_a none">
+                        <div class="user_box clearfix">
+                            <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
+                            <ul class="user_msg fr">
+                                <li class="user_name"><?php echo $nickname;?></li>
+                                <li class="user_txt">你已累计砍价<span class="yellow kanmoney"></span>元，再邀请<span class="yellow "><span class="kanfriend"></span>位好友
+                                </span>帮忙就砍价成功咯～</li>
+                            </ul>
+                        </div>
+                        <ul class="user_img_lst clearfix">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <a href="javascript:;" class="btn_share"></a>
+                        <a href="javascript:;" class="btn_take"></a>
+                    </div>
+                    <div class="person_box_b none">
+                        <!-- 未集齐 start-->
+                        <div class="user_box clearfix user_not none">
+                            <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
+                            <ul class="user_msg fr">
+                                <li class="user_name"><?php echo $nickname;?></li>
+                                <li class="user_txt">你已累计砍价<span class="yellow kanmoney"></span>元，再邀请<span class="yellow "><span class="kanfriend"></span>位好友
+                                </span>帮忙就砍价成功咯～</li>
+                            </ul>
+                            <a href="javascript:;" class="btn_share"></a>
+                            <a href="javascript:;" class="btn_take"></a>
+                        </div>
+                        <!-- 未集齐 end -->
+                        <!-- 集齐 start-->
+                        <div class="user_box clearfix user_done none">
+                            <div class="user_box clearfix">
+                                <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
+                                <ul class="user_msg fr">
+                                    <li class="user_name"><?php echo $nickname;?></li>
+                                    <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
+                                </ul>
+                            </div>
+                            <a href="javascript:;" class="btn_share"></a>
+                            <a href="javascript:;" class="btn_taken"></a>
+                        </div>
+                        <!-- 集齐 end-->
+                        <img class="banner" src="images/banner.png" alt=""/>
+                    <ul class="friend_lst"></ul>
+                </div>
+            </div>
+       
+            </div>
+            <!-- 弹框 -->
+            <div class="tk tk-load none">
+                <div class="tkIn">
+                    <img src="images/loading.gif" height="60" width="60" alt=""/>
+                    <p class="tlWrd">拼命加载中，请耐心等待</p>
+                </div>
+            </div>
+            <!-- 商品详情弹窗 -->
+            <div class="tk tk_detail none">
+                <div class="alert_detail">
+                    <div class="swiperimg">
+                        <img class="goods_d_Img" :src="img" alt=""/>
+                    </div>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <!-- 分享 -->
+            <div class="tk tk_share none">
+                <div class="tkIn ">
+                    <img class="floating shareImg" src="images/shareImg.png" alt=""/>
+                </div>
+            </div>
+            <!-- 活动规则 -->
+            <div class="tk tk_rule none">
+                <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
+                <div id="box">
+                    <div class="" id="inner" style="position: relative; ">
+                        <img class="rules" src="images/rule.png" alt=""/>
+                    </div>
+                </div>
+                <a href="javascript:;" class="btn_now"></a>
+                <a href="javascript:;" class="btn_close"></a>
+            </div>
+            <!-- 留资 -->
+            <div class="tk tk_info none">
+                <div class="tkIn ">
+                    <div class="info_box">
+                        <ul class="info_lst">
+                            <li class="clearfix">
+                                <div class="col1">手机号：</div>
+                                <div class="col2">
+                                    <input type="text" class="ipt phone" />
+                                </div>
+                            </li>
+                            <li class="clearfix">
+                                <a href="javascript:;" class="btn_yz fr">获取验证码</a>
+                            </li>
+                            <li class="clearfix">
+                                <div class="col1">验证码：</div>
+                                <div class="col2">
+                                    <input type="tel" class="ipt code" />
+                                </div>
+                            </li>
+                        </ul>
+                        <a href="javascript:;" class="btn_vip"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- 已领过券 -->
+            <div class="tk tk_already none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="sorrytxt" src="images/sorrytxt.png" alt=""/>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <!-- 成功砍价弹窗 -->
+            <div class="tk tk_suc none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="suctxt" src="images/suctxt.png" alt=""/>
+                    <div class="kans"><strong>0</strong>元</div>
+                    <!--               <a href="javascript:;" class="btn_close"></a> -->
+                </div>
+            </div>
+            <!-- 成功领券弹窗 -->
+            <div class="tk tk_suc_taken none">
+                <div class="tkIn ">
+                    <img class="alert_bg" src="images/alert_bg.png" alt=""/>
+                    <img class="suctkntxt" src="images/suctkntxt.png" alt=""/>
+                    <a href="javascript:;" class="btn_close"></a>
+                </div>
+            </div>
+            <div id="orientLayer" class="mod-orient-layer">
+                <div class="mod-orient-layer__content"><i class="icon mod-orient-layer__icon-orient"></i>
+                    <div class="mod-orient-layer__desc">为了更好的体验，请使用横屏浏览</div>
+                </div>
+            </div>
+            <div class="qr-box">
+                <div id="qr-box__img" class="qr-box__img"></div>
+                <div class="qr-box__thumb qr-box__thumb_default"
+                style="background-image:url(//wximg.gtimg.com/wxp/wxmoment-source/img/weixin-logo.png)"></div>
+                <div id="qr-box__thumb" class="qr-box__thumb"></div>
+                <div class="qr-box__text">微信扫一扫<br>手机浏览效果更佳</div>
+            </div>
+        </div>
+    </body>
+    <!-- js -->
+    <script src="js/jweixin-1.0.0.js"></script>
+    <script src="js/vue.js"></script>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/pxloader-images.min.js"></script>
+    <script src="js/m.Tween.js"></script>
+    <script src="js/PageSlider.js"></script>
+    <script src="js/self.js"></script>
+</body>
+</html>

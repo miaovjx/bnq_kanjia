@@ -205,99 +205,64 @@ $(function() {
                     }
                 }
             });
-            $('.btn_now,.btn_join').on('tap', function(ev) {
-                var cut = $('.cut').val();
-                alert('cut' + cut);
-                $('.tk_rule').addClass('none');
-                if (cut > 0) { //已砍过价
-                    $.ajax({
-                        url: 'index.php?mod=index&ac=detail',
-                        type: 'POST',
-                        data: {},
-                        dataType: 'json',
-                        beforeSend: function() {
-                            $('.tk-load').removeClass('none');
-                        },
-                        success: function(data) {
-                            $('.tk-load').addClass('none');
-                            $('.kanmoney').html(data.allmoney);
-                            $('.kanfriend').html(data.num);
-                            var type = data.type;
-                            var res = data.res;
-                          /*  var res = [{
-                                headimgurl: 'images/user.jpg'
-                            }, {
-                                headimgurl: 'images/user.jpg'
-                            }, {
-                                headimgurl: 'images/user.jpg'
-                            }, {
-                                headimgurl: 'images/user.jpg'
-                            }, {
-                                headimgurl: 'images/user.jpg'
-                            }]*/
-                            //console.log(res);
-                            if (res) { //有好友帮砍
-                                $('.person_box_b').removeClass('none');
-                                $('.person_box_a').addClass('none');
-                                $('.page_my_not').css('overflowY', 'auto')
-                                if (type == 0) { //不可领券
-                                    $('.person_box_b .user_done').addClass('none');
-                                    $('.person_box_b .user_not').removeClass('none')
-                                } else if (type == 1) { //可领券
-                                    $('.person_box_b .user_done').removeClass('none');
-                                    $('.person_box_b .user_not').addClass('none')
-                                }
-                                $('.friend_lst').empty();
-                                var html = '';
-                                for (var i = 0; i < res.length; i++) {
-                                    html += '<li class="clearfix"><div class="col1"><img class="userImg" src="' + res[i].headimgurl + '" alt=""/></div><div class="col2">' + res[i].nickname + '</div><div class="col3">￥<strong>' + res[i].money + '</strong></div></li>'
-                                }
-                                $('.friend_lst').append(html);
-                            } else { //没有好友帮砍
-                                $('.person_box_b').addClass('none');
-                                $('.person_box_a').removeClass('none')
-                            }
-                            $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
-                        }
-                    })
-                } else { //未砍过
-                    $('.page-wrap').css('-webkit-transform', 'translate(0, -100%)');
-                }
+            $('.btn_now').on('tap', function() {
+                var ran = Math.random();
+                window.location.href = "index.php?" + ran
             });
-            //立即领券 
-            /* $('.btn_taken').on('tap', function(ev) {
+                       $('.btn_close').on('click', function(ev) {
                 ev.stopPropagation();
-                var idNum = 8876;
-                console.log('tel:' + tel);
-             
-                $('.tk').addClass('none');
-                $.ajax({
-                    url: 'http://gz2.bnq.com.cn/Web/getMtDataWeb.html',
-                    type: 'POST',
-                    dataType: 'jsonp',
-                    jsonp: 'callback',
-                    data: {
-                        id: idNum,
-                        mobile: tel
-                    },
-                    beforeSend: function() {
-                        $('.tk-load').removeClass('none');
-                    },
-                    success: function(data) {
-                        $('.tk-load').addClass('none');
-                        if (data.status == 'success') {
-                            // alert('优惠券发放成功!');
-                            $('.tk_suc_taken').removeClass('none');
-                        } else {
-                            if (data.status == 'SUCCESS') {
-                                alert('手机验证码发送失败，请稍后再试');
-                            } else if (data.status == 'FAIL') {
-                                alert('最大领券次数为1次');
-                            }
+                $(this).closest('.tk').addClass('none');
+            });
+            $.ajax({
+                url: 'index.php?mod=index&ac=detail',
+                type: 'POST',
+                data: {},
+                dataType: 'json',
+                beforeSend: function() {
+                    $('.tk-load').removeClass('none');
+                },
+                success: function(data) {
+                    $('.tk-load').addClass('none');
+                    $('.kanmoney').html(data.allmoney);
+                    $('.kanfriend').html(data.num);
+                    var type =  data.type;
+                    var res = data.res;
+                    /*var res = [{
+                        headimgurl: 'images/user.jpg'
+                    }, {
+                        headimgurl: 'images/user.jpg'
+                    }, {
+                        headimgurl: 'images/user.jpg'
+                    }, {
+                        headimgurl: 'images/user.jpg'
+                    }, {
+                        headimgurl: 'images/user.jpg'
+                    }]*/
+                    //console.log(res);
+                    if (res) { //有好友帮砍
+                        $('.person_box_b').removeClass('none');
+                        $('.person_box_a').addClass('none');
+                        $('.page_my_not').css('overflowY', 'auto')
+                        if (type == 0) { //不可领券
+                            $('.person_box_b .user_done').addClass('none');
+                            $('.person_box_b .user_not').removeClass('none')
+                        } else if (type == 1) { //可领券
+                            $('.person_box_b .user_done').removeClass('none');
+                            $('.person_box_b .user_not').addClass('none')
                         }
+                        $('.friend_lst').empty();
+                        var html = '';
+                        for (var i = 0; i < res.length; i++) {
+                            html += '<li class="clearfix"><div class="col1"><img class="userImg" src="' + res[i].headimgurl + '" alt=""/></div><div class="col2">' + res[i].nickname + '</div><div class="col3">￥<strong>' + res[i].money + '</strong></div></li>'
+                        }
+                        $('.friend_lst').append(html);
+                    } else { //没有好友帮砍
+                        $('.person_box_b').addClass('none');
+                        $('.person_box_a').removeClass('none')
                     }
-                })
-            });*/
+                    //  $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
+                }
+            })
             var takenBtn = true;
             $('.btn_taken').on('tap', function() { //获取优惠券接口
                 if (takenBtn) {
@@ -321,13 +286,21 @@ $(function() {
                                     //alert('已领过券')
                                     $('.tk_already').removeClass('none');
                                 } else if (data.error == 2) {
-                                    alert('砍价金额未满')
+                                    alert('砍价金额未满');
+                                    var ran = Math.random();
+                                    window.location.href = "index.php?" + ran
                                 } else if (data.error == 404) {
-                                    alert('非法进入')
+                                    alert('非法进入');
+                                    var ran = Math.random();
+                                    window.location.href = "index.php?" + ran
                                 } else if (data.error == 3) {
-                                    alert('未找到参与记录')
+                                    alert('未找到参与记录');
+                                    var ran = Math.random();
+                                    window.location.href = "index.php?" + ran
                                 } else if (data.error == 4) {
-                                    alert('领券失败')
+                                    alert('领券失败');
+                                    var ran = Math.random();
+                                    window.location.href = "index.php?" + ran
                                 }
                             }
                         }
@@ -489,119 +462,6 @@ $(function() {
                     });
                 }
             })();
-            var jq = jQuery.noConflict();
-            var tel = '';
-            var vipbtn = true;
-            //加入会员，集客砍价
-            jq('.btn_vip').on('tap', function(ev) {
-                ev.stopPropagation();
-                tel = jq('.phone').val();
-                var check = jq('.code').val();
-                console.log('tel:' + tel, 'check:' + check);
-                var telReg = /^(\+?0?86\-?)?1[345789]\d{9}$/;
-                if (!telReg.test(tel)) {
-                    alert('请输入正确的手机号');
-                    return;
-                } else {
-                    if (vipbtn) {
-                        vipbtn = false;
-                        $.ajax({
-                            url: 'index.php?mod=index&ac=info',
-                            type: 'POST',
-                            data: {
-                                check: check,
-                                phone: tel
-                            },
-                            dataType: 'json',
-                            beforeSend: function() {
-                                $('.tk-load').removeClass('none');
-                            },
-                            success: function(data) {
-                                $('.tk-load').addClass('none');
-                                vipbtn = true;
-                                if (data.result == true) {
-                                    alert('注册成功!');
-                                    $('.tk_info').addClass('none');
-                                    loginBtn = true;
-                                    //$('.page-wrap').css('-webkit-transform', 'translate(0, -00%)');
-                                    //h5.moveTo(1, false);
-                                } else {
-                                    if (data.error == 1) {
-                                        alert('参数不全!');
-                                    } else if (data.error == 2) {
-                                        alert('手机号格式错误!');
-                                    } else if (data.error == 3) {
-                                        alert('手机号已被使用!');
-                                    } else if (data.error == 4) {
-                                        alert('入库失败!');
-                                    } else if (data.error == 5) {
-                                        alert('注册失败!');
-                                    }
-                                    var ran = Math.random();
-                                    window.location.href = "index.php?" + ran
-                                }
-                            }
-                        })
-                    } else {
-                        alert('请求已发送，请勿重复提交!')
-                    }
-                }
-            });
-            //短信验证码接口
-            var yzbtn = true;
-            var yztimer = null;
-            var yzcont = 60;
-            jq('.btn_yz').on('tap', function(ev) {
-                ev.stopPropagation();
-                tel = jq('.phone').val();
-                console.log('tel:' + tel);
-                var telReg = /^(\+?0?86\-?)?1[345789]\d{9}$/;
-                if (!telReg.test(tel)) {
-                    alert('请输入正确的手机号');
-                    return;
-                } else {
-                    if (yzbtn) {
-                        yzbtn = false;
-                        $('.btn_yz').addClass('gray');
-                        yztimer = setInterval(function() {
-                            if (yzcont <= 0) {
-                                clearInterval(yztimer);
-                                yzcont = 60
-                                $('.btn_yz').removeClass('gray');
-                                $('.btn_yz').html('获取验证码');
-                                yzbtn = true;
-                            } else {
-                                yzcont--
-                                $('.btn_yz').html('获取验证码(' + yzcont + ')');
-                            }
-                        }, 1000)
-                        jq.ajax({
-                            url: 'http://gz2.bnq.com.cn/Code/send.html',
-                            type: 'POST',
-                            dataType: 'jsonp',
-                            jsonp: "callback",
-                            data: {
-                                mobile: tel
-                            },
-                            beforeSend: function() {
-                                jq('.tk-load').removeClass('none');
-                            },
-                            success: function(data) {
-                                jq('.tk-load').addClass('none');
-                                if (data.state == 'success') {
-                                    alert('手机验证码发送成功!');
-                                } else {
-                                    alert('手机验证码发送失败，请稍后再试');
-                                }
-                            }
-                        })
-                    }
-                }
-            });
-            jq('.btn_close').on('click', function(ev) {
-                ev.stopPropagation();
-                jq(this).closest('.tk').addClass('none');
-            });
             $('.btn_detail').on('tap', function(ev) {
                 ev.stopPropagation();
                 $('.tk_rule').removeClass('none');
@@ -715,54 +575,6 @@ $(function() {
                         $('.tk_info').removeClass('none');
                     }
                 }
-            });
-            $('.tk_suc').on('tap', function(ev) {
-                ev.stopPropagation();
-                $('.tk_suc').addClass('none');
-                $.ajax({
-                    url: 'index.php?mod=index&ac=detail',
-                    type: 'POST',
-                    data: {},
-                    dataType: 'json',
-                    beforeSend: function() {
-                        $('.tk-load').removeClass('none');
-                    },
-                    success: function(data) {
-                        $('.tk-load').addClass('none');
-                        $('.kanmoney').html(data.allmoney);
-                        $('.kanfriend').html(data.num);
-                        var type = data.type;
-                        var res = data.res;
-                        console.log(res);
-                      if (res) { //有好友帮砍
-                                $('.person_box_b').removeClass('none');
-                                $('.person_box_a').addClass('none');
-                                $('.page_my_not').css('overflowY', 'auto')
-                                if (type == 0) { //不可领券
-                                    $('.person_box_b .user_done').addClass('none');
-                                    $('.person_box_b .user_not').removeClass('none')
-                                } else if (type == 1) { //可领券
-                                    $('.person_box_b .user_done').removeClass('none');
-                                    $('.person_box_b .user_not').addClass('none')
-                                }
-                                $('.friend_lst').empty();
-                                var html = '';
-                                for (var i = 0; i < res.length; i++) {
-                                    html += '<li class="clearfix"><div class="col1"><img class="userImg" src="' + res[i].headimgurl + '" alt=""/></div><div class="col2">' + res[i].nickname + '</div><div class="col3">￥<strong>' + res[i].money + '</strong></div></li>'
-                                }
-                                $('.friend_lst').append(html);
-                            } else { //没有好友帮砍
-                                $('.person_box_b').addClass('none');
-                                $('.person_box_a').removeClass('none')
-                            }
-                        $('.page-wrap').css('-webkit-transform', 'translate(0, -200%)');
-                    }
-                })
-            });
-            $('.tk_suc_taken .btn_close,.tk_already .btn_close').on('tap', function() {
-                //  h5.moveTo(1, false);
-                var ran = Math.random();
-                window.location.href = "index.php?" + ran
             });
             //分享弹层
             $('.btn_share').on('tap', function(ev) {

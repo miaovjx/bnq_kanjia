@@ -55,8 +55,8 @@
                                 <img class="userImg fl" src="<?php echo $headimgurl;?>" alt=""/>
                                 <ul class="user_msg fr">
                                     <li class="user_name"><?php echo $nickname;?></li>
-                                    <li class="user_txt">好友已累计砍去<span class="yellow kanmoney"></span>元，<br />再邀请<span class="yellow kanfriend"><span></span>位好友
-                                    </span>就砍价成功咯!</li>
+                                    <li class="user_txt">好友已累计砍去<span class="yellow kanmoney"></span>元，<br />再邀请<span class="yellow"><span class=" kanfriend"></span>位好友</span>
+                                    就砍价成功咯!</li>
                                 </ul>
                                 <a href="javascript:;" class="btn_share_help none"></a>
                                  <a href="javascript:;" class="btn_share_help2 none"></a>
@@ -66,12 +66,12 @@
                             <!-- 集齐 start-->
                             <div class="user_box clearfix user_done none">
                                 <img class="userImg fl" src="" alt=""/>
-                                <ul class="user_msg fr">
-                                    <li class="user_name"></li>
-                                    <li class="user_suc"><span>您已成功集满，可以领券咯!</span><img class="gou" src="images/gou.png" alt=""/></li>
+                                <ul class="user_msg fr">                                   
+                                    <li class="user_suc clearfix"><div class="fl" style="width:100%;">您的好友已成功集满</div><div class="fl" style="margin-right:10px;">可以领券咯!</div><img class="gou fl" src="images/gou.png" alt=""/></li>
                                 </ul>
                                 <a href="javascript:;" class="btn_share_join"></a>
-                                <a href="javascript:;" class="btn_taken"></a>
+                                 <a href="javascript:;" class="btn_share_help3 "></a>
+                               <!--  <a href="javascript:;" class="btn_taken"></a> -->
                             </div>
                             <!-- 集齐 end-->
                             <img class="banner" src="images/banner.png" alt=""/>
@@ -95,9 +95,14 @@
             </div>
             <!-- 活动规则 -->
             <div class="tk tk_rule none">
-                <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
-                <img class="rules" src="images/rule.png" alt=""/>
+            <img class="alert_rule" src="images/alert_rule.jpg" alt=""/>
+                <div id="box">
+                    <div class="" id="inner" style="position: relative; ">  
+                        <img class="rules" src="images/rule.png" alt=""/>                 
+                    </div>
+                </div>
                 <a href="javascript:;" class="btn_now"></a>
+                 <a href="javascript:;" class="btn_close"></a>
             </div>
             <!-- 帮好友砍价 -->
             <div class="tk tk_kan1 none">
@@ -126,12 +131,13 @@
                     <a href="javascript:;" class="btn_close"></a>
                 </div>
             </div>
-            <!-- 兑换成功弹窗 -->
+             <!-- 成功砍价弹窗 -->
             <div class="tk tk_suc none">
                 <div class="tkIn ">
                     <img class="alert_bg" src="images/alert_bg.png" alt=""/>
                     <img class="suctxt" src="images/suctxt.png" alt=""/>
-                    <div class="kans"><strong>88</strong>元</div>
+                    <div class="kans"><strong>0</strong>元</div>
+                    <a href="javascript:;" class="btn_close"></a>
                 </div>
             </div>
             <!-- 商品详情弹窗 -->

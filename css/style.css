@@ -270,7 +270,7 @@ html, body {
 .tk.tk_rule { padding-bottom: 0;}
 .alert_rule{ width:100%; height: 100%;}
 .btn_now{ display: block; width: 335px; height: 207px; position: absolute; bottom: -10px; left: 24%; background: url(../images/btn_now.png) no-repeat;}
-.rules{ position:absolute; left: 7%; top: 2%;}
+.rules{ }
 /* 验证会员 */
 .info_box{ display: block; width: 599px; height: 809px; position: absolute; top: 10%; left: 4%; background: url(../images/tk_info.png) no-repeat;}
 .info_lst{ width: 480px; height: 280px; position: absolute;; left: 9%; top: 14%;}
@@ -286,9 +286,9 @@ html, body {
 
 #box {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
+    top: 70px;
+    height: 700px;
+    left: 0px;
     width: 100%;
     overflow: hidden;
     background-size: 100% 100%;
@@ -334,9 +334,9 @@ html, body {
     align-items: center;
 }
 .selloutIcon{ width: 100%; height: auto; position: absolute; left: 0%; top: 34%; z-index: 20; }
-.countBox{ position: absolute; left: 255px; top: 104px; z-index: 20;}
-.countBox span{ font-size: 42px; color: #714e2f; float: left; display: block; margin-right: 40px; }
-.countBox span:nth-of-type(2){ margin-right: 64px; }
+.countBox{ position: absolute; left: 255px; top: 108px; z-index: 20;}
+.countBox span{ font-size: 42px; color: #714e2f; float: left; display: block; margin-right: 46px; }
+.countBox span:nth-of-type(2){ margin-right: 68px; }
 .next_lst { position: relative; top: 50px; left: 23px; width: 560px; }
 .next_lst li{ float: left; text-align: center; width: 186px;}
 .next_lst .nextImg{ max-width: 186px; max-height:112px;}
@@ -350,6 +350,8 @@ html, body {
 .tk_suc .suctxt{ position: absolute; left: 22%; top: 22%;} 
 .tk_suc .kans{ width: 100%; text-align: center; color: #ff9933; font-size: 52px; position: absolute; left: 0; top: 34%;}
 .tk_suc strong{ font-size: 148px; font-weight: bold; }
+.tk_suc .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center;top: 17%; right: 7%;}
+.tk_rule .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center;top: 2%; right: 3%;}
 .alert_detail{ display: block; width: 612px; height: 520px; position: absolute; background: url(../images/tk_detail.png) no-repeat; left: 6px; top: 20%;}
 .alert_detail .btn_close{ display: block; width: 62px; height: 62px; position: absolute; right: 8%; top: 0%; z-index: 60;}
 .alert_detail .swiperimg{ width: 100%; height:386px; position: absolute; left: 0; top: 70px;}
@@ -358,9 +360,13 @@ html, body {
 /*p3*/
 .page_my_not { background: url(../images/bg2.jpg) no-repeat; display: block; position: relative; left: 0; top: 0;}
 .person_box_a{ background: url(../images/person_box_a.png) no-repeat; display: block; width: 599px; height: 304px; position: absolute; left: 3.5%; top: 605px; padding:25px 20px 46px 24px; box-sizing: border-box;}
+.person_box_a.none{ display: none;} 
 .yellow{ color: #ff6600;}
 .userImg{ width: 117px; height: 117px; }
 .user_box{ width: 530px; height: 122px; margin: 0 auto;}
+.page_my_not .user_done.none{ display: none;}
+.page_my_not .user_done .btn_share,.page_my_not .user_done .btn_taken{ bottom: -68px}
+.page_my_not .user_done{ display: block; width: 510px; height: 130px;  box-sizing: border-box; margin:40px auto 0; }
 .user_name{ font-size: 30px; color: #000000; margin-bottom: 10px;}
 .user_msg{ width: 380px;}
 .user_txt{ font-size: 24px; color: #000000;}
@@ -385,20 +391,24 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.person_box_b{background: url(../images/person_box_b.png) no-repeat; display: block; width: 599px; height: 1008px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 46px 24px; box-sizing: border-box;}
+.page_my_not .banner{ margin-top: 40px;}
+.page_my_not .friend_lst{ top:40px;}
+.person_box_b.none{ display: none;}
+.person_box_b{background: url(../images/person_box_b.png) no-repeat; display: block; width: 599px; height: 1048px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 86px 24px; box-sizing: border-box;}
 .page_my_done .btn_take{ left: 310px; top: 166px;}
 .page_my_done .btn_share{ left: 58px; top: 166px;}
 .page_my_done .btn_taken{ left: 310px; top: 166px;}
 .page_my_done .banner{ position: relative; top: 118px;}
 .friend_lst li{ margin-bottom: 24px;}
 .friend_lst .col1,.friend_lst .userImg{ width: 85px; height: 85px; margin-right: 10px;}
-.friend_lst .col2{ height: 85px; line-height: 85px; font-size: 30px; color: #000000;}
+.friend_lst .col2{ height: 85px; line-height: 85px; font-size: 30px; color: #000000; width: 100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .friend_lst .col1,.friend_lst .col2{ float: left; }
 .friend_lst .col3{ float: right; font-size: 30px; color: #ff6600; height: 85px; line-height: 85px;}
 .friend_lst .col3 strong{ font-size: 52px; font-weight: bold;}
 .friend_lst{ position: relative; top: 116px; width: 520px; margin: 0 auto;}
 .user_suc{ font-size: 24px; color: #ff6600; height: 60px; line-height: 60px; }
 .user_suc span{ position: relative; top: -18px; margin-right: 10px;}
+.page_share .user_suc span{ line-height: 30px;}
 /* page share*/
 .page_share {background:#d6cbb2 ;}
 .page_share .page_inner2 {
@@ -407,7 +417,7 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.page_share .btn_share_help,.btn_share_help2{ left: 310px; top: 166px;}
+.page_share .btn_share_help,.btn_share_help2,.btn_share_help3{ left: 310px; top: 166px;}
 .page_share .btn_share_join{ left: 58px; top: 166px;}
 .page_share .banner{ position: relative; top: 118px;}
 
@@ -417,7 +427,7 @@ html, body {
 .tk_suc_taken .suctkntxt{ position: absolute; left: 14%; top: 25%;} 
 
 .btn_share_help{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share_help.png) no-repeat;}
-.btn_share_help2{display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share_help2.png) no-repeat;}
+.btn_share_help2,.btn_share_help3{display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share_help2.png) no-repeat;}
 .btn_share_join{ display: block; width: 229px; height: 106px; position: absolute; background: url(../images/btn_share_join.png) no-repeat;}
 
 .btn_kan1{display: block; width: 242px; height: 150px; background: url(../images/kan1.png) no-repeat; position: absolute; left: 29%; top: 38%;}
