@@ -15,7 +15,7 @@ $(function() {
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
         dev: 0, //
-        musicUrl: 'music/bg.mp3',
+        // musicUrl: 'music/bg.mp3',
         baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     ////默认分享
@@ -205,7 +205,7 @@ $(function() {
             $('.userImg').attr('src', data.head);
             $('.user_name').html(data.nick);
             $('.kanfriend').html(data.num);
-            var type = data.type;
+            var type =  data.type;
             var res = data.res;
             var btn_frined_take = true;
             /*var res = [{
@@ -233,8 +233,13 @@ $(function() {
             }
             if (type == 0) { //未集满
                 btn_frined_take = false
+                $('.user_msg').removeClass('none');
+                $('.user_msg_suc').addClass('none');
             } else if (type == 1) { //已集满,可领券
                 btn_frined_take = true
+                //好友集满 话术
+                $('.user_msg_suc').removeClass('none');
+                $('.user_msg').addClass('none');
             }
             $('.btn_share_help').on('tap', function() {
                 if (btn_frined_take) { //已集满
@@ -246,7 +251,8 @@ $(function() {
                         url: 'index.php?mod=index&ac=cut',
                         type: 'POST',
                         data: {
-                            shareid: shareid
+                            shareid: shareid,
+                            newstate: states
                         },
                         dataType: 'json',
                         beforeSend: function() {
@@ -269,10 +275,10 @@ $(function() {
                                 } else if (data.error == 404) {
                                     alert('非法进入');
                                 } else if (data.error == 3) {
-                                     $('.tk_kan2').removeClass('none');
-                            // alert('已砍满额（可领券）');
+                                    $('.tk_kan2').removeClass('none');
+                                    // alert('已砍满额（可领券）');
                                 } else if (data.error == 4) {
-                                      $('.tk_kan2').removeClass('none');
+                                    $('.tk_kan2').removeClass('none');
                                     //alert('已砍满额（可领券）');
                                 } else if (data.error == 5) {
                                     alert('入库失败');

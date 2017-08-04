@@ -15,7 +15,7 @@ $(function() {
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
         dev: 0, //
-         musicUrl: 'music/bg.mp3',
+         //musicUrl: 'music/bg.mp3',
         baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     var state = $('.states').val();
@@ -489,7 +489,8 @@ $(function() {
                             url: 'index.php?mod=index&ac=cut',
                             type: 'POST',
                             data: {
-                                shareid: shareid
+                                shareid: shareid,
+                                newstate : states
                             },
                             dataType: 'json',
                             beforeSend: function() {
@@ -543,7 +544,8 @@ $(function() {
                             url: 'index.php?mod=index&ac=cut',
                             type: 'POST',
                             data: {
-                                shareid: shareid
+                                shareid: shareid,
+                                 newstate : states
                             },
                             dataType: 'json',
                             beforeSend: function() {

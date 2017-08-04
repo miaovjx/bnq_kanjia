@@ -15,7 +15,7 @@ $(function() {
     var h5 = new PageSlider({
         pages: $('.page-wrap .page'),
         dev: 0, //
-         musicUrl: 'music/bg.mp3',
+         //musicUrl: 'music/bg.mp3',
         baseUrl: 'http://baj.weiyihui.com.cn/bnq_bargain/'
     });
     var state = $('.states').val();
@@ -157,7 +157,7 @@ $(function() {
         nextImg: "./images/next2.png"
     }, {
         ntxt: "./images/ntxt3.png",
-        nextImg: "./images/next3.png"
+        nextImg: "./images/goods3_2.png"
     }];
     var nextLst2 = [{
         ntxt: "./images/ntxt4.png",
@@ -167,7 +167,7 @@ $(function() {
         nextImg: "./images/next5.png"
     }, {
         ntxt: "./images/gtxt3.png",
-        nextImg: "./images/goods3.png"
+        nextImg: "./images/goods3_3.png"
     }];
     var nextLst3 = [];
     h5._loadimg(imgarr, function() {
@@ -175,7 +175,7 @@ $(function() {
             $('.loading').addClass('none');
             $('.page1').removeClass('none');
             countDown(); //倒计时开始
-            var states = $('.states').val();
+            var states =  $('.states').val();
             console.log("第" + states + "周");
             if (states == 1) {
                 goodsLst = goodsLst1;
@@ -597,7 +597,7 @@ $(function() {
             $('.btn_kan').on('tap', function(ev) {
                 ev.stopPropagation();
                 var login = $('.login').val();
-                // alert('login:' + login);
+                // alert('states:' + states);
                 //  alert('loginBtn:' + loginBtn);
                 if (loginBtn) {
                     $('.tk_info').addClass('none');
@@ -607,7 +607,8 @@ $(function() {
                             url: 'index.php?mod=index&ac=cut',
                             type: 'POST',
                             data: {
-                                shareid: shareid
+                                shareid: shareid,
+                                newstate : states
                             },
                             dataType: 'json',
                             beforeSend: function() {
@@ -663,7 +664,8 @@ $(function() {
                             url: 'index.php?mod=index&ac=cut',
                             type: 'POST',
                             data: {
-                                shareid: shareid
+                                shareid: shareid,
+                                newstate : states
                             },
                             dataType: 'json',
                             beforeSend: function() {
@@ -755,7 +757,7 @@ $(function() {
                     }
                 })
             });
-            $('.tk_suc_taken .btn_close,.tk_already .btn_close').on('tap', function() {
+            $('.tk_suc_taken .btn_close').on('tap', function() {
                 //  h5.moveTo(1, false);
                 var ran = Math.random();
                 window.location.href = "index.php?" + ran

@@ -269,7 +269,7 @@ html, body {
 /* 规则 */
 .tk.tk_rule { padding-bottom: 0;}
 .alert_rule{ width:100%; height: 100%;}
-.btn_now{ display: block; width: 335px; height: 207px; position: absolute; bottom: -10px; left: 24%; background: url(../images/btn_now.png) no-repeat;}
+.btn_now{ display: block; width: 335px; height: 207px; position: absolute; bottom: -20px; left: 24%; background: url(../images/btn_now.png) no-repeat;}
 .rules{ }
 /* 验证会员 */
 .info_box{ display: block; width: 599px; height: 809px; position: absolute; top: 10%; left: 4%; background: url(../images/tk_info.png) no-repeat;}
@@ -286,7 +286,7 @@ html, body {
 
 #box {
     position: absolute;
-    top: 70px;
+    top: 60px;
     height: 700px;
     left: 0px;
     width: 100%;
@@ -372,7 +372,7 @@ html, body {
 .page_my_not .user_done .btn_share,.page_my_not .user_done .btn_taken{ bottom: -122px}
 .page_my_not .user_done{ display: block; width: 510px; height: 130px;  box-sizing: border-box; margin:40px auto 0; }
 .user_name{ font-size: 30px; color: #000000; margin-bottom: 10px;}
-.user_msg{ width: 380px;}
+.user_msg,.user_msg_suc{ width: 380px;}
 .user_txt{ font-size: 24px; color: #000000;}
 .user_img_lst{ margin: 20px auto 0; width: 550px;}
 .user_img_lst>li{ display: block; width: 85px; height: 85px; margin-right: 6px; background: url(../images/icons1.jpg) no-repeat; float: left;}
@@ -395,7 +395,7 @@ html, body {
     -webkit-background-size: 100% 100%;
     background-size: 100% 100%;
 }
-.page_my_not .banner{ margin-top: 110px; position: relative; z-index: 20;}
+.page_my_not .banner{ margin-top: 100px; position: relative; z-index: 20;}
 .page_my_not .friend_lst{ top:40px;}
 .person_box_b.none{ display: none;}
 .person_box_b{background: url(../images/scrolly.png) repeat-y; display: block; width: 599px; min-height: 480px; position: absolute; left: 3.5%; top: 630px; padding:25px 20px 183px 24px; box-sizing: border-box; }
@@ -413,8 +413,9 @@ html, body {
 .friend_lst .col1,.friend_lst .col2{ float: left; }
 .friend_lst .col3{ float: right; font-size: 30px; color: #ff6600; height: 85px; line-height: 85px;}
 .friend_lst .col3 strong{ font-size: 52px; font-weight: bold;}
-.friend_lst{ position: relative; top: 116px; width: 520px; margin: 0 auto;}
-.user_suc{ font-size: 24px; color: #ff6600; height: 60px; line-height: 60px; }
+.friend_lst{ position: relative; top: 156px; width: 520px; margin: 0 auto;}
+
+.user_suc{ font-size: 24px; color: #ff6600; }
 .user_suc span{ position: relative; top: -18px; margin-right: 10px;}
 .page_share .user_suc span{ line-height: 30px;}
 /* page share*/
@@ -429,7 +430,7 @@ html, body {
 .page_share .btn_share_help,.page_share .btn_share_help2{ left: 10px; top: 150px}
 
 .page_share .btn_share_join{ left: 280px; top: 150px;}
-.page_share .banner{ position: relative; top: 152px;}
+.page_share .banner{ position: relative; top: 130px;}
 
 .tk_kan1 .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center; top: 8%; right: 7%;}
 .tk_suc_taken .btn_close{ display: block; width: 62px; height: 62px; position: absolute; background: url(../images/dele.png) no-repeat center center;}
